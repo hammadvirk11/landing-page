@@ -1,0 +1,54 @@
+.card-auction{
+min-height: 500px;
+border:1px solid #1C1C20;
+border-radius: 20px;
+margin-bottom: 20px;
+padding: 20px;
+}
+.image-radius{
+    border-radius: 10px;
+}
+.image-radius1 {
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+}
+.button-absolute{
+    height: 29px;
+    margin-top: -59px;
+    border-radius: 68px !important;
+    padding: 0px !important;
+    width: 99px;
+    background-color: transparent !important;
+    font-size: 13px !important;
+}
+.button-absolute:hover{
+
+    background-color: transparent;
+
+}
+.title{
+   margin-top: -10px;
+   font-size: 22px;
+}
+.image-flex{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: -15px;
+}
+.name{
+    padding: 8px;
+}
+.ETH-flex{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -10px;
+}
+.title-ETH{
+    margin-top: -10px;
+    font-size: 22px;
+}
+.number {
+    margin-top: -10px;
+
+}

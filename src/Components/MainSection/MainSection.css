@@ -1,0 +1,32 @@
+.main-back{
+    background-color: #222227;
+    min-height: 400px;
+    padding-left: 8%;
+    padding-top: 5.5%;
+}
+.marketplace{
+    padding-top: 15px;
+    line-height: 0;
+}
+.button-flex {
+    display: flex;
+   margin-top: 4%;
+}
+.explore {
+    width: 150px !important;
+    height: 50px !important;
+    border-radius: 15px !important;
+    background-color: #6164FF !important;
+    text-transform: uppercase !important;
+
+}
+.create{
+    background-color: transparent !important;
+    border: none !important;
+    margin-left: 5% !important;
+    text-transform: uppercase !important;
+}
+.create:hover{
+    color: blue;
+    background-color: transparent;
+}
