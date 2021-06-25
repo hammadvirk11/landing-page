@@ -5,7 +5,9 @@ import MainSection from '../../Components/MainSection/MainSection'
 import LiveAuctions from '../../Components/LiveAuctions/LiveAuctions'
 import TopSellers from '../../Components/TopSellers/TopSellers'
 import Explore from '../../Components/Explore/Explore'
-
+import HotCollection from '../../Components/HotCollection/HotCollection'
+import Selling from '../../Components/Selling/Selling'
+import Footer from '../../Components/Footer/Footer'
 
 export default function Home() {
 
@@ -16,7 +18,9 @@ export default function Home() {
       <LiveAuctions/>
       <TopSellers/>
       <Explore/>
-
+      <HotCollection/>
+      <Selling/>
+      <Footer/>
     </React.Fragment>
   );
 }

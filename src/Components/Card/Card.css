@@ -5,6 +5,51 @@ border-radius: 20px;
 margin-bottom: 20px;
 padding: 20px;
 }
+.card-collection{
+border:1px solid #1C1C20;
+min-height: 200px;
+border-radius: 20px;
+justify-content: center;
+
+}
+.hasmask{
+    text-align: center;
+    font-size: large;
+    padding-top: 10px;
+}
+.red{
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #21213C;
+    margin-right: 20px;
+    /* margin-top: 5%; */
+}
+.detail-selling {
+    padding-top: 20px;
+    font-size: 14px;
+}
+.wallet {
+    padding-top: 10px;
+}
+.flex-selling{
+    display: flex;
+}
+.erx {
+    text-align: center;
+    font-size: 15px;
+    margin-top: -5px;
+}
+.image-radius-coll{
+    width: 297px ;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+}
+.avatar-image-col {
+    border-radius: 20px;
+    margin-left: 39%;
+    margin-top: -30px;
+}
 .image-radius{
     border-radius: 10px;
 }

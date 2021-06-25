@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown,Button } from "react-bootstrap";
 import './CustomNavbar.css'
 function CustomNavbar() {
 
@@ -42,8 +42,9 @@ function CustomNavbar() {
             </NavDropdown>
           </Nav>
           <Nav>
-          <NavDropdown title="John Doe" id="collasible-nav-dropdown" className="padding-dropdown">
-            </NavDropdown>
+            {/* <NavDropdown title="John Doe" id="collasible-nav-dropdown" className="padding-dropdown">
+              </NavDropdown> */}
+              <Button className="sign-in">Sign in</Button>
 
           </Nav>
         </Navbar.Collapse>

@@ -3,6 +3,34 @@
     min-height: 400px;
     padding-left: 8%;
     padding-top: 5.5%;
+    /* margin-left: 8%;
+    margin-right: 8%; */
+    margin-top: 2%;
+    
+    background: url('../../assets/slide1.jpg') center center / cover no-repeat;
+    border-radius: 30px;
+}
+.main-back1{
+    background-color: #222227;
+    min-height: 400px;
+    padding-left: 8%;
+    padding-top: 5.5%;
+    /* margin-left: 8%;
+    margin-right: 8%; */
+    margin-top: 2%;
+    background: url('../../assets/slide2.jpg') center center / cover no-repeat;
+    border-radius: 30px;
+}
+.main-back2{
+    background-color: #222227;
+    min-height: 400px;
+    padding-left: 8%;
+    padding-top: 5.5%;
+    /* margin-left: 8%;
+    margin-right: 8%; */
+    margin-top: 2%;
+    background: url('../../assets/slide3.jpg') center center / cover no-repeat;
+    border-radius: 30px;
 }
 .marketplace{
     padding-top: 15px;
