@@ -12,7 +12,7 @@ function CustomNavbar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link href="#pricing"><input className="input-search" 
+          {/* <Nav.Link href="#pricing"><input className="input-search" 
           placeholder="Search items, collectionn and creators"
           placeholderColor="white"/></Nav.Link>
           <NavDropdown title="Home" id="collasible-nav-dropdown" className="padding-dropdown">
@@ -39,7 +39,7 @@ function CustomNavbar() {
               <NavDropdown.Item href="#action/3.2">Author</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Collection</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.4">Create</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
           <Nav>
             {/* <NavDropdown title="John Doe" id="collasible-nav-dropdown" className="padding-dropdown">
