@@ -1,14 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { StylesProvider } from "@material-ui/core/styles";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "../src/store/reducers";
+import middleware from "../src/store/middlewares";
+
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StylesProvider injectFirst>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StylesProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
