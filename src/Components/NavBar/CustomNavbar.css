@@ -14,6 +14,9 @@ margin-top: 5px;
   color: white !important;
 
 }
+.Smll-nav {
+  display: none ;
+}
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   position: absolute;
   background-color: black !important;
@@ -21,8 +24,31 @@ margin-top: 5px;
 }
 .navbar {
 background-color: transparent !important;
+position: sticky !important;
+top: 0% !important;
+z-index: 1000;
 }
 .sign-in{
   width: 100px;
   border-radius: 10px !important;
+}
+@media screen and (max-width: 700px) {
+  .navbar {
+display: none !important;
+    }
+    .Smll-nav {
+      display: flex !important;
+      justify-content: space-between;
+      height: 50px;
+      margin-bottom: 20px;
+      padding: 8%;
+
+    }
+    .small-unitok{
+      color: white;
+    }
+    .sign-in{
+      height: 50px !important;
+      margin-top: -10px;
+    }
 }
