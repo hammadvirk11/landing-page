@@ -21,16 +21,11 @@ export default function ProfileSidebar() {
                         <h6 className="text-profile">
                             All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary
                         </h6>
-                        <InputGroup className="mb-3" >
-
-                            <FormControl
-                                value="HJSJAHJSHJGHJHSJHDJDDDDSJDSDSJ...."
-                                className="input-profile"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                            />
-                        </InputGroup>
-                        <p> <BiWorld color="blue" />  https://unitok.template</p>
+                        <div className="copied-input" >
+                            <p>FTGVYBHUJNKMVGBHNJHBGVF...</p>
+                            <span><AiOutlineCopy color="white" style={{cursor:'pointer'}}/></span>
+                        </div>
+                        <p className="for-hover"> <BiWorld color="blue" />  https://unitok.template</p>
                         <p> <FaInstagram /> <FaTwitter className="margin-icon-profile" /> <FaMediumM /></p>
                         <hr />
                         <div className="flex-profile">

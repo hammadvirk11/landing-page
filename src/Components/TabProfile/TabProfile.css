@@ -65,3 +65,15 @@
     margin-bottom: 40px;
     font-size: 20px;
 }
+@media screen and (max-width: 700px) {
+    .nav-tabs {
+        /* border-bottom: 1px solid #dee2e6; */
+        border: 1px solid #1C1C20 !important;
+        height: auto !important;
+        border-radius: 20px;
+        padding: 5px;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    
+  }

@@ -1,9 +1,6 @@
 import React from "react";
 import "./TabProfile.css";
-import { Tabs, Tab, Form, Row, Col, InputGroup } from "react-bootstrap";
-import { BiWorld } from "react-icons/bi";
-import { FaTwitter, FaMediumM, FaInstagram } from "react-icons/fa";
-import { AiOutlineCopy } from "react-icons/ai";
+import { Tabs, Tab, Form, Row, Col, } from "react-bootstrap";
 import Card from '../../Components/Card/Card'
 import ActivityCard from '../../Components/Card/ActivityCard'
 import Personal from './Setting/Personal'
@@ -92,7 +89,7 @@ export default function TabProfile() {
         </Row>
 
       </Tab>
-      <Tab eventKey="Settings" title="Settings" >
+      <Tab eventKey="Setting" title="Settings" >
         <Row>
       <Col md = {6}>
       <Personal/>

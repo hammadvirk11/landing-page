@@ -28,10 +28,10 @@ export default function Card() {
   </Form.Group>
 
   <Row className="mb-3">
-    <Form.Group as={Col} controlId="formGridCity">
+    {/* <Form.Group as={Col} controlId="formGridCity">
       <Form.Label className="label-color" style={{marginLeft:20}}> Royalties</Form.Label >
       <Form.Control  className="input-back"/>
-    </Form.Group>
+    </Form.Group> */}
 
     {/* <Form.Group as={Col} controlId="formGridState">
       <Form.Label>State</Form.Label>
@@ -46,7 +46,7 @@ export default function Card() {
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label className="label-color" style={{marginLeft:20}}>Propertie</Form.Label>
+      <Form.Label className="label-color" style={{marginLeft:20}}>Properties</Form.Label>
       <Form.Control className="input-back" placeholder = "Subject" />
     </Form.Group>
   </Row>
