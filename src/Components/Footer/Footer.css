@@ -37,3 +37,8 @@ font-size: 14px;
 .margin-footer{
     margin-bottom: 90px;
 }
+.explore-footer:hover{
+    font-size: 14px;
+    color: whitesmoke !important;
+    cursor: pointer;
+    }

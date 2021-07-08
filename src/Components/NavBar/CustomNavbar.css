@@ -14,15 +14,45 @@ margin-top: 5px;
   color: white !important;
 
 }
+.Smll-nav {
+  display: none ;
+}
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   position: absolute;
   background-color: black !important;
   border-radius: 10px;
 }
 .navbar {
-background-color: transparent !important;
+background-color: black !important;
+position: sticky !important;
+top: 0% !important;
+z-index: 1000;
+border-bottom: 0.1rem solid #1C1C20;
 }
 .sign-in{
   width: 100px;
   border-radius: 10px !important;
+}
+.bg-dark {
+  background-color: none !important;
+}
+@media screen and (max-width: 700px) {
+  .navbar {
+display: none !important;
+    }
+    .Smll-nav {
+      display: flex !important;
+      justify-content: space-between;
+      height: 50px;
+      margin-bottom: 20px;
+      padding: 8%;
+
+    }
+    .small-unitok{
+      color: white;
+    }
+    .sign-in{
+      height: 50px !important;
+      margin-top: -10px;
+    }
 }

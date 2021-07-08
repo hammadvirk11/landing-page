@@ -97,3 +97,26 @@ justify-content: center;
     margin-top: -10px;
 
 }
+.card-activity{
+    min-height: 200px;
+    border:1px solid #1C1C20 !important;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px; 
+    margin-top: 50px;
+    display: flex;
+}
+.small-image-activity {
+    width: 150px;
+    height: 170px;
+    border-radius: 20px;
+    margin-right: 40px;
+}
+.walking-on-air {
+    color: white;
+    padding-top: 10px;
+}
+.walking-on-list {
+    color: white;
+    margin-top: 30px;
+}

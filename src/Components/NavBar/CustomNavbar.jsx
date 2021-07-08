@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function CustomNavbar() {
 
   return (
-
+<>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="#home" style={{fontSize:28}}>Unitok</Navbar.Brand>
@@ -51,6 +51,11 @@ function CustomNavbar() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    <div className="Smll-nav">
+<h2 className="small-unitok">Unitok</h2>
+<Button className="sign-in">Sign in</Button>
+    </div>
+    </>
   );
 }
 export default CustomNavbar;

@@ -2,6 +2,8 @@
     background-color: #222227;
     min-height: 400px;
     padding-left: 8%;
+    padding-right: 8%;
+
     padding-top: 5.5%;
     /* margin-left: 8%;
     margin-right: 8%; */
@@ -15,6 +17,8 @@
     min-height: 400px;
     padding-left: 8%;
     padding-top: 5.5%;
+    padding-right: 8%;
+
     /* margin-left: 8%;
     margin-right: 8%; */
     margin-top: 2%;
@@ -26,6 +30,8 @@
     min-height: 400px;
     padding-left: 8%;
     padding-top: 5.5%;
+    padding-right: 8%;
+
     /* margin-left: 8%;
     margin-right: 8%; */
     margin-top: 2%;
@@ -34,7 +40,7 @@
 }
 .marketplace{
     padding-top: 15px;
-    line-height: 0;
+    line-height: 1;
 }
 .button-flex {
     display: flex;
@@ -49,7 +55,7 @@
 
 }
 .create{
-    background-color: gray !important;
+    background-color: black !important;
     border: none !important;
     margin-left: 2% !important;
     text-transform: uppercase !important;
@@ -58,6 +64,19 @@
 
 }
 .create:hover{
-    color: blue;
+    color: blue !important;
     background-color: transparent;
 }
+@media screen and (max-width: 700px) {
+    .explore {
+        width: 120px !important;
+    }
+    .create{
+        width: 120px !important;
+    
+    }
+    .marketplace{
+        padding-top: 15px;
+        line-height: 2 !important;
+    }
+  }
