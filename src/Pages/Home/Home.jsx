@@ -6,6 +6,8 @@ import LiveAuctions from '../../Components/LiveAuctions/LiveAuctions'
 import TopSellers from '../../Components/TopSellers/TopSellers'
 import Explore from '../../Components/Explore/Explore'
 import HotCollection from '../../Components/HotCollection/HotCollection'
+import Blog from '../../Components/BlogSection/Blog'
+
 import Selling from '../../Components/Selling/Selling'
 import Footer from '../../Components/Footer/Footer'
 
@@ -19,6 +21,7 @@ export default function Home() {
       <TopSellers/>
       <Explore/>
       <HotCollection/>
+      <Blog/>
       <Selling/>
       <Footer/>
     </React.Fragment>

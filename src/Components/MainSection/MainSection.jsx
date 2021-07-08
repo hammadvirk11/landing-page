@@ -51,7 +51,7 @@ export default function MainSection() {
         <div className="main-back">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
         <Button className="explore">Explore</Button>{' '}
         <Button className="create" >Create</Button>
@@ -61,7 +61,7 @@ export default function MainSection() {
         <div className="main-back1">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
         <Button className="explore">Explore</Button>{' '}
         <Button className="create" >Create</Button>
@@ -72,7 +72,7 @@ export default function MainSection() {
         <div className="main-back2">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
         <Button className="explore">Explore</Button>{' '}
         <Button className="create" >Create</Button>
