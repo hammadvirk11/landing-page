@@ -45,3 +45,19 @@ export const signup = (userInfo) => {
     return Promise.reject(resp);
   });
 };
+
+export const authToken = (loginToken) => {
+  let reqObj = {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": loginToken
+    },
+    body: JSON.stringify({
+      "userType": "coseller"
+    }),
+  };
+  const url = endPoints.getAuthToken();
+  return fetch(url, reqObj).then((resp) => resp.json());
+};

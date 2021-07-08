@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { getUser } from "../../store/actions/authedUser";
 import Password from "../resuable-components/Password";
 import { Typography } from "@material-ui/core";
+import { Redirect } from "react-router";
 
 const StyledSigninBtn = styled(Button)`
   width: 100%;
@@ -72,8 +73,8 @@ function SignIn({ dispatch, authedUser }) {
   };
 
   return (
+    authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
     <Container>
-      {console.log(JSON.stringify(credentials))}
       <form onSubmit={handleSubmit}>
         <InputField
           variant="outlined"

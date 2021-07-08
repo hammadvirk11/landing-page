@@ -82,7 +82,6 @@ export default function SignIn() {
   };
   return (
     <Container>
-      {console.log(JSON.stringify(userInfo.response))}
       <form onSubmit={handleSubmit}>
         <InputField
           variant="outlined"
@@ -136,7 +135,7 @@ export default function SignIn() {
 
       <span style={{ color: "#ffffff", marginTop: "35px" }}>
         Already have an account?&nbsp;
-        <StyledLink to="/">
+        <StyledLink to="/signin">
           <span style={{ color: "#6164ff" }}>Sign In</span>
         </StyledLink>
       </span>

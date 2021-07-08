@@ -21,12 +21,12 @@ class OAuth extends Component {
       const { dispatch } = this.props;
     if (type === "Google" && response.tokenObj) {
       const socialInfo = {
-        token: response.tokenObj.access_token,
+        token: response.tokenObj.id_token,
         provider: "GOOGLE",
         domain: "SHOPTYPE",
       };
       dispatch(getUserFromSocialLogin(socialInfo))
-      
+
       if (type === "Facebook") {
       }
     }

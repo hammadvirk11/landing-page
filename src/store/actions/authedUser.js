@@ -1,6 +1,7 @@
-import { login, socialLogin } from "../../services/api";
+import { login, socialLogin, authToken } from "../../services/api";
 
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
+export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 
 export function setAuthedUser(authedUser) {
   return {
@@ -9,9 +10,19 @@ export function setAuthedUser(authedUser) {
   };
 }
 
+export function setAuthToken(authToken) {
+  return {
+    type: SET_AUTH_TOKEN,
+    authToken,
+  };
+}
 export function getUser(userCredentials) {
   return (dispatch) => {
     return login(userCredentials).then((authedUser) => {
+      if (authedUser.error == undefined)
+        authToken(authedUser.data.token).then((authToken) =>
+          dispatch(setAuthToken(authToken))
+        );
       dispatch(setAuthedUser(authedUser));
     });
   };
@@ -20,7 +31,11 @@ export function getUser(userCredentials) {
 export function getUserFromSocialLogin(info) {
   return (dispatch) => {
     return socialLogin(info).then((authedUser) => {
-      dispatch(setAuthedUser(authedUser)); 
+      if (authedUser.error == undefined)
+        authToken(authedUser.data.token).then((authToken) =>
+          dispatch(setAuthToken(authToken))
+        );
+      dispatch(setAuthedUser(authedUser));
     });
   };
 }
