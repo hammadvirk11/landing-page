@@ -2,10 +2,12 @@ import React from "react";
 import "./HotCollection.css";
 import { Row, Col } from "react-bootstrap";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import Card from '../Card/SmallCard'
+import SmallCard from '../Card/SmallCard'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { shallowEqual, useSelector, useDispatch } from "react-redux";
+
 export default function HotCollection() {
 
     var settings = {
@@ -47,6 +49,7 @@ export default function HotCollection() {
             }
         ]
     };
+    const Products = useSelector(state => state.changeState.getHotcollection)
     return (
         <React.Fragment>
             <div className="live-auction">
@@ -54,32 +57,21 @@ export default function HotCollection() {
                     <h6 className="live">Hot collections</h6>
                     <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
                 </div>
-                <Row>
-                    <Slider {...settings}>
-                    <Col md={3}>
-                        <Card />
-                    </Col>
-                    <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>            <Col md={3}>
-                        <Card />
-                    </Col>
-                    </Slider>
-                </Row>
+                {Products.length === 0 ?
+                    <h1 style={{ textAlign: 'center' }}>No Collection Found</h1>
+                    :
+                    <Row>
+                        <Slider {...settings}>
+
+                            {Products.map((x) =>
+                                <Col md={3}>
+                                    <SmallCard
+                                        data={x} />
+                                </Col>
+                            )}
+                        </Slider>
+                    </Row>
+                }
             </div>
         </React.Fragment>
     );

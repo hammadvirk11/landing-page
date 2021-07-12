@@ -3,6 +3,8 @@ import "./ProductForm.css";
 import { Form, Image, Button, Row, Col, } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../Redux/Action";
+import { axiosClient } from '../../helper';
+import { NotificationManager } from "react-notifications";
 export default function FormDetail() {
   const dispatch = useDispatch();
   const [title , setTitle] = React.useState("")
@@ -12,7 +14,7 @@ export default function FormDetail() {
   const [radio , setradio] = React.useState("")
 
 
-  const handeSubmit = () => {
+  const handeSubmit = async() => {
     const data = {
       "id": "a",
       "handle": "adoratherapy-communication-chakra-spice",
@@ -76,8 +78,12 @@ export default function FormDetail() {
       },
       "slug": ""
     }
+    const res = await axiosClient().post(`store/manual/product`, data);
+        console.log(res,"response product")
+        NotificationManager.success(res?.data?.message);
+      
 
-    dispatch(addProduct(data));
+    // dispatch(addProduct(data));
   }
   return (
     <React.Fragment>

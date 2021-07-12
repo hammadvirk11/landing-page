@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./LiveAuctions.css";
 import {Row,Col } from "react-bootstrap";
 import { AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai";
@@ -6,6 +6,8 @@ import Card from '../Card/Card'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import {shallowEqual, useSelector, useDispatch  } from "react-redux";
+
 export default function LiveAuctions() {
 
     var settings = {
@@ -47,6 +49,12 @@ export default function LiveAuctions() {
           }
         ]
       };
+      const Products = useSelector(state => state.changeState.getproducts)
+      // const [arrayData,setArrayData] = React.useState([])
+      // setTimeout(() => {
+      //     setArrayData(Products)
+      //   }, 2000);
+      //   console.log(arrayData,"hjhfarray")
   return (
     <React.Fragment>
    <div className="live-auction">
@@ -56,10 +64,14 @@ export default function LiveAuctions() {
        </div>
         <Row>
         <Slider {...settings}>
+        {Products.map((x) => 
+
             <Col  md={3}>
-            <Card/>
+            <Card
+            data={x}/>
             </Col>
-            <Col  md={3}>
+            )}
+            {/* <Col  md={3}>
             <Card/>
             </Col> 
             <Col  md={3}>
@@ -79,7 +91,7 @@ export default function LiveAuctions() {
             </Col>
             <Col  md={3}>
             <Card/>
-            </Col>
+            </Col> */}
             </Slider>
         </Row>
        </div>

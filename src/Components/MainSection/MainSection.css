@@ -23,7 +23,7 @@
     /* margin-left: 8%;
     margin-right: 8%; */
     margin-top: 2%;
-    /* background: url('../../assets/slide2.jpg') center center / cover no-repeat; */
+    background: url('../../assets/slide2.jpg') center center / cover no-repeat;
     border-radius: 30px;
 }
 .main-back2{
@@ -42,7 +42,7 @@
 .marketplace{
     padding-top: 15px;
     line-height: 0;
-    color: #e0e0e0;
+    color: black !important;
 }
 .button-flex {
     display: flex;

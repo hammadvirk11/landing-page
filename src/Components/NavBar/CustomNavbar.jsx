@@ -2,6 +2,8 @@
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown,Button } from "react-bootstrap";
 import './CustomNavbar.css'
+import { Link } from "react-router-dom";
+
 function CustomNavbar() {
 
   return (
@@ -44,7 +46,7 @@ function CustomNavbar() {
           <Nav>
             {/* <NavDropdown title="John Doe" id="collasible-nav-dropdown" className="padding-dropdown">
               </NavDropdown> */}
-              <Button className="sign-in">Sign in</Button>
+              <Link to="/signin"><Button className="sign-in">Sign in</Button></Link>
 
           </Nav>
         </Navbar.Collapse>

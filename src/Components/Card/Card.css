@@ -52,6 +52,8 @@ justify-content: center;
 }
 .image-radius{
     border-radius: 10px;
+    width: 260px;
+    height: 300px;
 }
 .image-radius1 {
     border-radius: 10px;
