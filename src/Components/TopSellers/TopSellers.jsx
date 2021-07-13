@@ -20,7 +20,7 @@ export default function TopSellers() {
       {Vendors.map((x,index) =>
       <Col md={2} style={{display:'flex' ,marginBottom:40}}>
         <p style={{fontSize:20,paddingTop:10,marginRight:10}}>{index+1}</p>
-        <Image src={avatar} className="seller-image"/>
+        <Image src={x.logo? x.logo :avatar} className="seller-image"/>
         <p style={{paddingTop:5}}>@ {x?.name.substr(0,15)}<br/></p>
 
 

@@ -50,6 +50,7 @@ export default function Explore() {
     ]
   };
   const Products = useSelector(state => state.changeState.getexplore)
+  const AllProducts = useSelector(state => state.changeState.getproducts)
 
   return (
     <React.Fragment>
@@ -59,7 +60,19 @@ export default function Explore() {
           <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
         </div>
         {Products.length===0 ?
-            <h1 style={{textAlign:'center'}}>No Card Found</h1>
+            <Row>
+            <Slider {...settings}>
+  
+              {AllProducts.map((x) =>
+  
+                <Col md={3}>
+                  <Card
+                    data={x} />
+                </Col>
+              )}
+  
+            </Slider>
+          </Row>
           :
         <Row>
           <Slider {...settings}>

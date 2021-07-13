@@ -50,6 +50,8 @@ export default function HotCollection() {
         ]
     };
     const Products = useSelector(state => state.changeState.getHotcollection)
+    const AllProducts = useSelector(state => state.changeState.getproducts)
+
     return (
         <React.Fragment>
             <div className="live-auction">
@@ -58,7 +60,17 @@ export default function HotCollection() {
                     <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
                 </div>
                 {Products.length === 0 ?
-                    <h1 style={{ textAlign: 'center' }}>No Collection Found</h1>
+                   <Row>
+                   <Slider {...settings}>
+
+                       {AllProducts.map((x) =>
+                           <Col md={3}>
+                               <SmallCard
+                                   data={x} />
+                           </Col>
+                       )}
+                   </Slider>
+               </Row>
                     :
                     <Row>
                         <Slider {...settings}>
