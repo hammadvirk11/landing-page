@@ -7,16 +7,17 @@ const initialState = {
   getvendors:[],
   getexplore:[],
   getHotcollection:[],
+  authtoken:''
 
 }
 const changeState = (state = initialState, action) => {
     switch (action.type) {
 
-      case "product": {
+      case "addproduct": {
 
         return {
           ...state,
-          product: action.product.data,
+          product: action.productData,
         };
       }
       case "products": {
@@ -45,6 +46,14 @@ const changeState = (state = initialState, action) => {
         return {
           ...state,
           getHotcollection: action.hotCollection,
+        };
+      }
+      case "tokenCase": {
+        console.log(action.tokensdata,'tokeb data hwh')
+
+        return {
+          ...state,
+          authtoken: action.tokensdata,
         };
       }
 

@@ -1,11 +1,12 @@
 import { axiosClient } from '../helper';
 import { NotificationManager } from "react-notifications";
+import axios from "axios";
 
 
 function addProductAction(data) {
     return {
-      type: "product",
-      product:data
+      type: "addproduct",
+      productData:data
     };
   }
 export function addProduct(data) {
@@ -126,6 +127,60 @@ export function hotCollection() {
         );
       } catch (err) {
         console.log(err);
+        NotificationManager.error(err.response?.data.message);
+      }
+    };
+  }
+  function getToken(data) {
+    console.log(data,"data here")
+    return {
+      type: "tokenCase",
+      tokensdata:data
+    };
+  }
+
+  function getUserToken(token)  {
+
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+    };
+    return async (dispatch) => {
+      try {
+    const res = await axios.post('https://dev-backend.shoptype.com/authenticate', {
+      "userType": "vendor"
+    } , options)
+    localStorage.setItem("token", res.data.token)
+    window.location.href = "/product"
+    dispatch(getToken(res.data.token));
+      } catch (err) {
+        console.log(err);
+        NotificationManager.error(err.response?.data.message);
+      }
+    };
+    // .then((response) => {
+    //   console.log(response);
+    //   getToken(response.data.token);
+
+    // }, (error) => {
+    //   console.log(error);
+    // });
+  }
+export function getUser(data) {
+
+
+    return async (dispatch) => {
+      try {
+        const res = await axiosClient().post(`/login`,data);
+        NotificationManager.success(res.data.msg);
+
+          dispatch(getUserToken(res.data.data.token));
+      } catch (err) {
+        console.log(err);
+        alert("Something Went Wrong")
+
         NotificationManager.error(err.response?.data.message);
       }
     };

@@ -22,7 +22,7 @@ export function axiosClient() {
   instance.interceptors.request.use(function (config) {
     // const token = localStorage.getItem("token");
     // config.headers.Authorization = cookies.get("accessToken");
-    // config.headers.common = {'x-auth-token': `${cookies.get("accessToken")}`}
+    config.headers.common = {'authorization': `${localStorage.getItem("token")}`}
     return config;
   });
 

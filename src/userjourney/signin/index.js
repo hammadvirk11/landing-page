@@ -11,7 +11,8 @@ import { connect } from "react-redux";
 import Password from "../resuable-components/Password";
 import { Typography } from "@material-ui/core";
 import { Redirect } from "react-router";
-
+import {shallowEqual, useSelector, useDispatch  } from "react-redux";
+import { getUser} from "../../Redux/Action";
 const StyledSigninBtn = styled(Button)`
   width: 100%;
   height: 50px;
@@ -60,7 +61,7 @@ export default function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // dispatch(getUser(credentials));npm
+    dispatch(getUser(credentials));
   };
 
   const passwordIsValid = (password) => {
@@ -69,6 +70,7 @@ export default function SignIn() {
       password,
     }));
   };
+  const dispatch = useDispatch();
 
   return (
     // authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
@@ -117,9 +119,9 @@ export default function SignIn() {
           <span style={{ color: "#6164ff" }}>Sign Up</span>
         </StyledLink>
       </span>
-      {/* <StyledLink style={{ marginTop: "15px" }} to="/forgotPassword">
+      <StyledLink style={{ marginTop: "15px" }} to="/forgotPassword">
         <span style={{ color: "#6164ff" }}>Forgot password?</span>
-      </StyledLink> */}
+      </StyledLink>
     </Container>
   );
 }

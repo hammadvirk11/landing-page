@@ -78,12 +78,12 @@ export default function FormDetail() {
       },
       "slug": ""
     }
-    const res = await axiosClient().post(`store/manual/product`, data);
-        console.log(res,"response product")
-        NotificationManager.success(res?.data?.message);
+    // const res = await axiosClient().post(`store/manual/product`, data);
+    //     console.log(res,"response product")
+    //     NotificationManager.success(res?.data?.message);
       
 
-    // dispatch(addProduct(data));
+    dispatch(addProduct(data));
   }
   return (
     <React.Fragment>
