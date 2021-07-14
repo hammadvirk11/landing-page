@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../Redux/Action";
 import { axiosClient } from '../../helper';
 import { NotificationManager } from "react-notifications";
+import axios from "axios";
+
 export default function FormDetail() {
   const dispatch = useDispatch();
   const [title , setTitle] = React.useState("")
@@ -14,76 +16,72 @@ export default function FormDetail() {
   const [radio , setradio] = React.useState("")
 
 
-  const handeSubmit = async() => {
+  const handleSubmit = async () => {
+    console.log("idr hn e")
     const data = {
       "id": "a",
       "handle": "adoratherapy-communication-chakra-spice",
       "title": title,
       "description": description,
       "primaryImageSrc": {
-        "id": "14075668463755",
-        "imageSrc": "https://shop-type-images-store.s3.amazonaws.com/dev/products/6fa51425-340e-f76c-69a1-dbbee4b241ad/comm3.jpg"
+          "id": "14075668463755",
+          "imageSrc": "https://shop-type-images-store.s3.amazonaws.com/dev/products/6fa51425-340e-f76c-69a1-dbbee4b241ad/comm3.jpg"
       },
       "catalogId": "04066e6d-4e8e-f9f0-3c35-f1e696ff4238",
       "variants": [
-        {
-          "id": "32052651131023",
-          "discountedPrice": "30.00",
-          "taxable": true,
-          "imageIds": [
-            "14075668463755"
-          ],
-          "sku": "RPCS5COM",
-          "quantity": 9,
-          "variantNameValue": {
-            "size": size
-          },
-          "dimensions": {
-            "length": "",
-            "width": "",
-            "height": ""
-          },
-          "weight": "",
-          "dimension_unit": "",
-          "weight_unit": "",
-          "is_virtual": false
-        }
+          {
+              "id": "32052651131023",
+              "discountedPrice": "30.00",
+              "taxable": true,
+              "imageIds": [
+                  "14075668463755"
+              ],
+              "sku": "RPCS5COM",
+              "quantity": 9,
+              "variantNameValue": {
+                  "size": size
+              },
+              "dimensions": {
+                  "length": "",
+                  "width": "",
+                  "height": ""
+              },
+              "weight": "",
+              "dimension_unit": "",
+              "weight_unit": "",
+              "is_virtual": false
+          }
       ],
       "store_name": "shop-types",
       "currency": "USD",
       "sourceId": "4494266695819",
       "sourceName": "SHOPIFY",
       "options": [
-        {
-          "name": "size",
-          "values": [
-            "10ML Roll On"
-          ]
-        }
+          {
+              "name": "size",
+              "values": [
+                  "10ML Roll On"
+              ]
+          }
       ],
       "status": "enabled",
       "geoLocation": {
-        "type": "Point",
-        "coordinates": [
-          0,
-          0
-        ]
+          "type": "Point",
+          "coordinates": [
+              0,
+              0
+          ]
       },
       "vendorName": "Sheroes Vendor",
       "productCommission": {
-        "percentage": 0
+          "percentage": 0
       },
-      "extras": {
-        "id": 232323
+      "extras":{
+        "id":232323
       },
       "slug": ""
     }
-    // const res = await axiosClient().post(`store/manual/product`, data);
-    //     console.log(res,"response product")
-    //     NotificationManager.success(res?.data?.message);
-      
-
-    dispatch(addProduct(data));
+   dispatch(addProduct(data));
   }
   return (
     <React.Fragment>
@@ -139,7 +137,7 @@ export default function FormDetail() {
 
           </Form.Group>
 
-          <Button variant="primary" type="submit" className="save-personal" onClick={handeSubmit}>
+          <Button variant="primary" className="save-personal" onClick={handleSubmit}>
             CREATE ITEM
           </Button>
         </Form>

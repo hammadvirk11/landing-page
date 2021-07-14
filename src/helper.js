@@ -16,13 +16,15 @@ export function axiosClient() {
   };
 
   let instance = axios.create(defaultOptions);
-  // axios.defaults.headers.common = {'x-auth-token': `${cookies.get("accessToken")}`}
+  // axios.defaults.headers.common =  {'Authorization': `${localStorage.getItem("token")}`}
 
   // Set the AUTH token for any request
   instance.interceptors.request.use(function (config) {
     // const token = localStorage.getItem("token");
     // config.headers.Authorization = cookies.get("accessToken");
-    config.headers.common = {'authorization': `${localStorage.getItem("token")}`}
+    // config.headers.common = {'authorization': `${localStorage.getItem("token")}`}
+    config.headers.common = {'Authorization': `${localStorage.getItem("token")}`}
+
     return config;
   });
 

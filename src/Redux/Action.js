@@ -3,29 +3,30 @@ import { NotificationManager } from "react-notifications";
 import axios from "axios";
 
 
-function addProductAction(data) {
-    return {
-      type: "addproduct",
-      productData:data
-    };
-  }
+// function addProductAction(data) {
+//     return {
+//       type: "addproduct",
+//       productData:data
+//     };
+//   }
 export function addProduct(data) {
     console.log(data)
 
-    return async (dispatch) => {
+    return async () => {
       try {
         const res = await axiosClient().post(`store/manual/product`, data);
-        NotificationManager.success(res?.data?.message);
+        alert(res.data.message);
 
-        dispatch(
-            addProductAction(
-            res.data,
+        // dispatch(
+        //     addProductAction(
+        //     res.data,
         
-          )
-        );
+        //   )
+        // );
       } catch (err) {
         console.log(err);
-        NotificationManager.error(err.response?.data.message);
+        alert(err.data.message);
+
       }
     };
   }
@@ -131,6 +132,32 @@ export function hotCollection() {
       }
     };
   }
+  // function signupAction(data) {
+  //   return {
+  //     type: "signup",
+  //     hotCollection:data
+  //   };
+  // }
+export function signup(data) {
+
+  const rid = "607274ee0cb35c0b894cb2bc";
+
+    return async (dispatch) => {
+      try {
+        const res = await axiosClient().post(`register?rid=${rid}`,data);
+        alert(res.data.message);
+        // dispatch(
+        //   signupAction(
+        //     res.data.products,
+        
+        //   )
+        // );
+      } catch (err) {
+        console.log(err);
+        NotificationManager.error(err.response?.data.message);
+      }
+    };
+  }
   function getToken(data) {
     console.log(data,"data here")
     return {
@@ -153,8 +180,9 @@ export function hotCollection() {
       "userType": "vendor"
     } , options)
     localStorage.setItem("token", res.data.token)
-    window.location.href = "/product"
     dispatch(getToken(res.data.token));
+    window.location.href = "/product"
+
       } catch (err) {
         console.log(err);
         NotificationManager.error(err.response?.data.message);

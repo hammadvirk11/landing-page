@@ -8,6 +8,9 @@ import { useState } from "react";
 import Container from "../container";
 import Password from "../resuable-components/Password";
 import InputField from "../resuable-components/InputField";
+import { signup} from "../../Redux/Action";
+import {shallowEqual, useSelector, useDispatch  } from "react-redux";
+import OAuth from "../../oauth";
 
 const StyledSignUpBtn = styled(Button)`
   width: 100%;
@@ -41,6 +44,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 export default function SignIn() {
+  const dispatch = useDispatch();
+
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -66,17 +71,11 @@ export default function SignIn() {
     }));
   };
   const handleSubmit = (event) => {
-    // event.preventDefault();
-    // if (userInfo.isPasswordValid) {
-    //   signup(userInfo)
-    //     .then((response) =>
-    //       setUserInfo((prevState) => ({
-    //         ...prevState,
-    //         response,
-    //       }))
-    //     )
-    //     .catch((error) => console.log("Something went wrong.", error));
-    // }
+    event.preventDefault();
+    if (userInfo.isPasswordValid) {
+      dispatch(signup(userInfo));
+
+    }
   };
   return (
     <Container>
@@ -128,7 +127,7 @@ export default function SignIn() {
         >
           <span style={{ color: "white" }}>or</span>
         </div>
-        {/* <OAuth /> */}
+        <OAuth />
       </form>
 
       <span style={{ color: "#ffffff", marginTop: "35px" }}>

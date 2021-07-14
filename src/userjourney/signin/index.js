@@ -13,6 +13,8 @@ import { Typography } from "@material-ui/core";
 import { Redirect } from "react-router";
 import {shallowEqual, useSelector, useDispatch  } from "react-redux";
 import { getUser} from "../../Redux/Action";
+import OAuth from "../../oauth";
+
 const StyledSigninBtn = styled(Button)`
   width: 100%;
   height: 50px;
@@ -111,7 +113,7 @@ export default function SignIn() {
         >
           <span style={{ color: "white" }}>or</span>
         </div>
-        {/* <OAuth /> */}
+        <OAuth />
       </form>
       <span style={{ color: "#ffffff", marginTop: "35px" }}>
         Don't have an account?&nbsp;
