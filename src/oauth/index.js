@@ -41,9 +41,7 @@ class OAuth extends Component {
     // this.sendData(response, "Google")
   };
 
-  onFailure = (error) => {
-    alert(error);
-  };
+  
 
   render() {
     return (

@@ -2,6 +2,8 @@ The entire auth flow is packed in the folder userJourney.
 
 Redux is maintained inside store folder.
 
+All the Api's are there in services folder.
+
 ## Available Scripts
 
 In the project directory, you can run:
