@@ -18,7 +18,7 @@ setTimeout(() => {
         <React.Fragment>
             <div className="card-auction">
                 <Image src={obj?.primaryImageSrc?.imageSrc} className="image-radius" />
-                <Button className="button-absolute">an hour left</Button>
+                {/* <Button className="button-absolute">an hour left</Button> */}
                 <h5 className="title">{obj?.title?.substr(0,20)}</h5>
                 <div className="image-flex">
                     <Image src={avatar} className="image-radius1" />
