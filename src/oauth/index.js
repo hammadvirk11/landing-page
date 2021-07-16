@@ -4,8 +4,7 @@ import { GoogleLogin } from "react-google-login";
 import config from "../config/config.json";
 import SocialLoginBtn from "../userjourney/resuable-components/SocialLoginButton";
 import styled from "styled-components";
-// import { getUserFromSocialLogin } from "../store/actions/authedUser";
-import { connect } from "react-redux"
+import { getUserFromSocialLogin } from "../Redux/Action";
 
 const SocialLoginContainer = styled.div`
   display: flex;
@@ -25,7 +24,7 @@ export default class OAuth extends Component {
         provider: "GOOGLE",
         domain: "SHOPTYPE",
       };
-      // dispatch(getUserFromSocialLogin(socialInfo))
+      dispatch(getUserFromSocialLogin(socialInfo))
 
       if (type === "Facebook") {
       }

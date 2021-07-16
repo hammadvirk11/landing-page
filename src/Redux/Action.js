@@ -188,13 +188,21 @@ export function signup(data) {
         NotificationManager.error(err.response?.data.message);
       }
     };
-    // .then((response) => {
-    //   console.log(response);
-    //   getToken(response.data.token);
+  }
+  export function getUserFromSocialLogin(info) {
+  const rid = "607274ee0cb35c0b894cb2bc";
 
-    // }, (error) => {
-    //   console.log(error);
-    // });
+    return async (dispatch) => {
+      try {
+        const res = await axiosClient().post(`social-login?rid=${rid}`,info);
+          dispatch(getUserToken(res.data.token));
+      } catch (err) {
+        console.log(err);
+        alert("Something Went Wrong")
+
+        NotificationManager.error(err.response?.data.message);
+      }
+    };
   }
 export function getUser(data) {
 
