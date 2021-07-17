@@ -3,7 +3,6 @@ import SignUp from "./userjourney/signup";
 import Home from "./Pages/Home/Home";
 import Profile from "./Pages/AuthorProfile/Profile";
 import ProductUpload from "./Pages/ProductUpload/ProductUpload";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 

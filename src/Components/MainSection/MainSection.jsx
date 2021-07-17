@@ -4,6 +4,8 @@ import {Button } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import  {Link} from 'react-router-dom'
+
 export default function MainSection() {
   var settings = {
     dots: false,
@@ -51,20 +53,20 @@ export default function MainSection() {
         <div className="main-back">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore">Explore</Button>{' '}
-        <Button className="create" >Create</Button>
+        <Link to="/signin"><Button className="explore">Explore</Button></Link>{' '}
+        <Link to="/signin">  <Button className="create" >Create</Button></Link>
         </div>
         </div>
 
         <div className="main-back1">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore">Explore</Button>{' '}
-        <Button className="create" >Create</Button>
+        <Link to="/signin"> <Button className="explore">Explore</Button></Link>{' '}
+        <Link to="/signin"><Button className="create" >Create</Button></Link>
         </div>
         </div>
 
@@ -72,10 +74,10 @@ export default function MainSection() {
         <div className="main-back2">
         <h1>The largest NFT marketplace</h1>
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
-        <p>Buy, sell, and discover exclusive digital assets.</p>
+        <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore">Explore</Button>{' '}
-        <Button className="create" >Create</Button>
+        <Link to="/signin"><Button className="explore">Explore</Button></Link>{' '}
+        <Link to="/signin"> <Button className="create" >Create</Button></Link>
         </div>
         </div>
         </Slider>

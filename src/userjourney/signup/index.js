@@ -10,6 +10,8 @@ import Password from "../resuable-components/Password";
 import OAuth from "../../oauth";
 import InputField from "../resuable-components/InputField";
 import { signup } from "../../services/api";
+//import { signup } from "../../store/actions/otherActions"
+import { useDispatch } from "react-redux";
 
 const StyledSignUpBtn = styled(Button)`
   width: 100%;
@@ -43,6 +45,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 export default function SignIn() {
+  //const dispatch = useDispatch();
+
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -78,6 +82,8 @@ export default function SignIn() {
           }))
         )
         .catch((error) => console.log("Something went wrong.", error));
+     // dispatch(signup(userInfo));
+
     }
   };
   return (

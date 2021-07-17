@@ -7,6 +7,7 @@ import Tab from '../TabProfile/TabProfile'
 import profilepic from '../../assets/profilepic.jpg'
 import './ProductForm.css'
 import FormDetail from './FormDetail'
+
 export default function ProductForm() {
 
     return (

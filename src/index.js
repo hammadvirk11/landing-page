@@ -5,21 +5,39 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StylesProvider } from "@material-ui/core/styles";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, compose } from "redux";
 import reducer from "../src/store/reducers";
 import middleware from "../src/store/middlewares";
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from   "redux-persist/integration/react";
+import { persistStore, persistReducer } from "redux-persist";
 
-const store = createStore(reducer, middleware);
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  persistedReducer,
+  composeEnhancers(middleware)
+);
+
+let persistor = persistStore(store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <StylesProvider injectFirst>
-      <Provider store={store}>
+<StylesProvider injectFirst>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
         <App />
-      </Provider>
-    </StylesProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    </PersistGate>
+  </Provider> 
+  </StylesProvider>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

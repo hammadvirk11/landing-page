@@ -52,6 +52,8 @@ justify-content: center;
 }
 .image-radius{
     border-radius: 10px;
+    width: 260px;
+    height: 300px;
 }
 .image-radius1 {
     border-radius: 10px;
@@ -73,8 +75,14 @@ justify-content: center;
 
 }
 .title{
-   margin-top: -10px;
+   margin-top: 10px;
    font-size: 22px;
+}
+.title-blog{
+   font-size: 22px;
+   margin-top: 20px;
+   padding: 10px;
+
 }
 .image-flex{
     display: flex;
@@ -120,3 +128,23 @@ justify-content: center;
     color: white;
     margin-top: 30px;
 }
+.image-blog{
+    width: 100%;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+    height: 350px;
+
+}
+.blog-flex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px;
+}
+.card-blog{
+    min-height: 500px;
+    border:1px solid #1C1C20;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  
+    }
