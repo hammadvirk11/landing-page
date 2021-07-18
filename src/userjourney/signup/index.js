@@ -12,6 +12,8 @@ import InputField from "../resuable-components/InputField";
 import { signup } from "../../services/api";
 //import { signup } from "../../store/actions/otherActions"
 import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 
 const StyledSignUpBtn = styled(Button)`
   width: 100%;
@@ -53,6 +55,7 @@ export default function SignIn() {
     password: "",
     isPasswordValid: true,
     response: null,
+    redirectToLogin: false
   });
 
   const handleChange = (event) => {
@@ -74,19 +77,30 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (userInfo.isPasswordValid) {
-      signup(userInfo)
-        .then((response) =>
+      const req = {
+        name: userInfo.name,
+        email: userInfo.email,
+        password: userInfo.password
+      }
+      signup(req)
+        .then((response) =>{
           setUserInfo((prevState) => ({
             ...prevState,
             response,
           }))
-        )
+          if(response.errors === undefined)
+            setUserInfo(prevState => ({
+              ...prevState,
+              redirectToLogin: true
+            }))
+         } )
         .catch((error) => console.log("Something went wrong.", error));
      // dispatch(signup(userInfo));
 
     }
   };
   return (
+    userInfo.redirectToLogin === true ? <Redirect to="/signin"/> :
     <Container>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -123,6 +137,7 @@ export default function SignIn() {
           control={<Checkbox value="remember" color="primary" />}
           label="I agree to privacy policy"
         />
+        {userInfo.response !== null && userInfo.response.code !== 200 && <Typography style={{color:"red"}}>{userInfo.response.message}</Typography>}
         <StyledSignUpBtn
           type="submit"
           fullWidth
