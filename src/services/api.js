@@ -1,5 +1,6 @@
 import endPoints from "../config/apiConfig";
 
+const platformId = "075fbd22-012c-cc3e-a382-f4147380402f";
 //api's for user journey
 
 //signin
@@ -9,6 +10,7 @@ export const login = (userCredentials) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
+      "X-Shoptype-PlatformId": platformId
     },
     body: JSON.stringify(userCredentials),
   };
@@ -22,6 +24,7 @@ export const socialLogin = (info) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
+      "X-Shoptype-PlatformId": platformId
     },
     body: JSON.stringify(info),
   };
@@ -36,6 +39,7 @@ export const signup = (userInfo) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
+      "X-Shoptype-PlatformId": platformId
     },
     body: JSON.stringify(userInfo),
   };
