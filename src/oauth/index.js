@@ -4,13 +4,14 @@ import { GoogleLogin } from "react-google-login";
 import config from "../config/config.json";
 import SocialLoginBtn from "../userjourney/resuable-components/SocialLoginButton";
 import styled from "styled-components";
-import { getUserFromSocialLogin } from "../Redux/Action";
+import { getUserFromSocialLogin } from "../store/actions/authedUser";
+import { connect } from "react-redux"
 
 const SocialLoginContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export default class OAuth extends Component {
+class OAuth extends Component {
   constructor() {
     super();
     this.state = { redirect: false };
@@ -40,9 +41,7 @@ export default class OAuth extends Component {
     // this.sendData(response, "Google")
   };
 
-  onFailure = (error) => {
-    alert(error);
-  };
+  
 
   render() {
     return (
@@ -78,3 +77,10 @@ export default class OAuth extends Component {
   }
 }
 
+function mapStateToProps({ authedUser }) {
+    return {
+      authedUser
+    };
+  }
+  
+  export default connect(mapStateToProps)(OAuth)

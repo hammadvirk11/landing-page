@@ -1,5 +1,3 @@
-import { createStore, combineReducers } from 'redux'
-
 const initialState = {
 
   product:"",
@@ -10,7 +8,7 @@ const initialState = {
   authtoken:''
 
 }
-const changeState = (state = initialState, action) => {
+const otherStuff = (state = initialState, action) => {
     switch (action.type) {
 
       case "addproduct": {
@@ -63,11 +61,5 @@ const changeState = (state = initialState, action) => {
         };
     }
   }
-    const reducers = combineReducers({
-        changeState,
-});
-//   const store = createStore(changeState)
-  export default reducers;
 
-
-// export default reducers;
+  export default otherStuff;

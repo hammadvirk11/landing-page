@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductForm.css";
 import { Form, Image, Button, Row, Col, } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../Redux/Action";
+import { addProduct } from "../../store/actions/otherActions";
 import { axiosClient } from '../../helper';
 import { NotificationManager } from "react-notifications";
 import axios from "axios";

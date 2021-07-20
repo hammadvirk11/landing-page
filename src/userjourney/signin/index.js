@@ -6,14 +6,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import Container from "../container";
+import OAuth from "../../oauth";
 import InputField from "../resuable-components/InputField";
 import { connect } from "react-redux";
+import { getUser } from "../../store/actions/authedUser";
 import Password from "../resuable-components/Password";
 import { Typography } from "@material-ui/core";
 import { Redirect } from "react-router";
-import {shallowEqual, useSelector, useDispatch  } from "react-redux";
-import { getUser} from "../../Redux/Action";
-import OAuth from "../../oauth";
 
 const StyledSigninBtn = styled(Button)`
   width: 100%;
@@ -46,7 +45,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default function SignIn() {
+function SignIn({ dispatch, authedUser }) {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -72,10 +71,9 @@ export default function SignIn() {
       password,
     }));
   };
-  const dispatch = useDispatch();
 
   return (
-    // authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
+    authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
     <Container>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -99,7 +97,7 @@ export default function SignIn() {
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
-        {/* {authedUser!==null && authedUser.error !== undefined && <Typography style={{color:"red"}}>{authedUser.error}</Typography>} */}
+        {authedUser!==null && authedUser.error !== undefined && <Typography style={{color:"red"}}>{authedUser.error}</Typography>}
         <StyledSigninBtn
           type="submit"
           fullWidth
@@ -128,10 +126,10 @@ export default function SignIn() {
   );
 }
 
-// function mapStateToProps({ authedUser }) {
-//   return {
-//     authedUser,
-//   };
-// }
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
 
-// export default connect(mapStateToProps)(SignIn);
+export default connect(mapStateToProps)(SignIn);

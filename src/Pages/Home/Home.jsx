@@ -1,4 +1,4 @@
-import React ,{useEffect}from "react";
+import React, {useEffect} from "react";
 import "./Home.css";
 import Navbar from '../../Components/NavBar/CustomNavbar'
 import MainSection from '../../Components/MainSection/MainSection'
@@ -11,7 +11,7 @@ import Blog from '../../Components/BlogSection/Blog'
 import Selling from '../../Components/Selling/Selling'
 import Footer from '../../Components/Footer/Footer'
 import {shallowEqual, useSelector, useDispatch  } from "react-redux";
-import { getProducts ,getVendors,hotCollection,explore} from "../../Redux/Action";
+import { getProducts ,getVendors,hotCollection,explore} from "../../store/actions/otherActions";
 
 export default function Home() {
   const dispatch = useDispatch();

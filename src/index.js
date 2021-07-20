@@ -1,41 +1,42 @@
-import React from 'react';
-import './index.css';
-import App from './App';
-// import 'react-app-polyfill/ie11'; // For IE 11 support
-// import 'react-app-polyfill/stable';
-// import './polyfill'
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { StylesProvider } from "@material-ui/core/styles";
+import { Provider } from "react-redux";
+import { createStore, compose } from "redux";
+import reducer from "../src/store/reducers";
+import middleware from "../src/store/middlewares";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from   "redux-persist/integration/react";
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
-import { createStore, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import reducers from "./Redux/Store";
 import { persistStore, persistReducer } from "redux-persist";
+
 const persistConfig = {
   key: "root",
   storage,
 };
 
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, reducer);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(middleware)
 );
+
 let persistor = persistStore(store);
+
 ReactDOM.render(
+<StylesProvider injectFirst>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
         <App />
-      </BrowserRouter>
     </PersistGate>
-  </Provider>, 
+  </Provider> 
+  </StylesProvider>,
   document.getElementById('root')
 );
 
