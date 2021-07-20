@@ -2,12 +2,13 @@ import React from "react";
 import "./ProductForm.css";
 import { Form, Image, Button, Row, Col, } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../store/actions/otherActions";
+import { addProduct,uploadMedia } from "../../store/actions/otherActions";
 import { axiosClient } from '../../helper';
 import { NotificationManager } from "react-notifications";
 import axios from "axios";
+import { connect } from "react-redux";
 
-export default function FormDetail() {
+function FormDetail({  authedUser }) {
   const dispatch = useDispatch();
   const [title , setTitle] = React.useState("")
   const [description , setdescription] = React.useState("")
@@ -83,6 +84,13 @@ export default function FormDetail() {
     }
    dispatch(addProduct(data));
   }
+  const handleFile = (e) =>{
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("fileNames", files);
+   dispatch(uploadMedia(data,authedUser.data.token));
+
+  }
   return (
     <React.Fragment>
       <div className="card-form">
@@ -90,7 +98,8 @@ export default function FormDetail() {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label className="label-color">Upload File</Form.Label>
-              <Form.Control type="file" placeholder="e.g. Image , Audio, Video" className="input-back"  style={{width:'100%'}}  />
+              <Form.Control type="file" placeholder="e.g. Image , Audio, Video" className="input-back"  style={{width:'100%'}} 
+              onChange={(event) => handleFile(event)} />
             </Form.Group>
 
           </Row>
@@ -150,3 +159,10 @@ export default function FormDetail() {
   );
 }
 
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(FormDetail);
