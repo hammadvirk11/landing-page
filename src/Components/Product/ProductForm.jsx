@@ -7,16 +7,20 @@ import Tab from '../TabProfile/TabProfile'
 import profilepic from '../../assets/profilepic.jpg'
 import './ProductForm.css'
 import FormDetail from './FormDetail'
+import { connect } from "react-redux";
 
-export default function ProductForm() {
-
+function ProductForm({ authedUser }) {
+const user = authedUser?.data?.name?.split(" ")
+console.log(user,"userdns")
     return (
         <div className="card-profile-style-padding" >
             <Row>
                 
                 <Col md={3}>
                     <div className="card-profile">
-                        <Image src={profilepic} className="profile-pic" />
+                        {/* <Image src={profilepic} className="profile-pic" /> */}
+                        <h1 className="profile-pic">{user?user[0]?.substr(0,1)+user[1].substr(0,1):''}</h1>
+
                         <h4 className="title-profile">Lily Roze</h4>
                         <h4 className="title-profile-l1roze">@l1roze</h4>
                         <h6 className="text-profile">
@@ -45,4 +49,10 @@ export default function ProductForm() {
         </div>
     );
 }
-
+function mapStateToProps({ authedUser }) {
+    return {
+      authedUser,
+    };
+  }
+  
+  export default connect(mapStateToProps)(ProductForm);

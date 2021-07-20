@@ -15,7 +15,8 @@ export default function ProfileSidebar() {
                 
                 <Col md={3}>
                     <div className="card-profile">
-                        <Image src={profilepic} className="profile-pic" />
+                        {/* <Image src={profilepic} className="profile-pic" /> */}
+                        <h1 className="profile-pic">HV</h1>
                         <h4 className="title-profile">Lily Roze</h4>
                         <h4 className="title-profile-l1roze">@l1roze</h4>
                         <h6 className="text-profile">

@@ -12,7 +12,7 @@ import InputField from "../resuable-components/InputField";
 import { signup } from "../../services/api";
 //import { signup } from "../../store/actions/otherActions"
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
 const StyledSignUpBtn = styled(Button)`
@@ -48,7 +48,7 @@ const StyledLink = styled(Link)`
 `;
 export default function SignIn() {
   //const dispatch = useDispatch();
-
+  const history = useHistory()
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
@@ -84,6 +84,10 @@ export default function SignIn() {
       }
       signup(req)
         .then((response) =>{
+          alert(response.message)
+          if(response.message === "User created successfully"){
+          history.push('/product')
+          }
           setUserInfo((prevState) => ({
             ...prevState,
             response,
@@ -151,7 +155,7 @@ export default function SignIn() {
         >
           <span style={{ color: "white" }}>or</span>
         </div>
-        <OAuth />
+        {/* <OAuth /> */}
       </form>
 
       <span style={{ color: "#ffffff", marginTop: "35px" }}>

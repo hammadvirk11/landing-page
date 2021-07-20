@@ -7,8 +7,12 @@
     border-top: none !important;
 }
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding-top: 8%;
 }
 .title-profile {
     color: white;

@@ -13,7 +13,7 @@ export default function FormDetail() {
   const [description , setdescription] = React.useState("")
   const [size , setsize] = React.useState("")
   const [Properties , setProperties] = React.useState("")
-  const [radio , setradio] = React.useState("")
+  const [price , setprice] = React.useState("")
 
 
   const handleSubmit = async () => {
@@ -31,7 +31,7 @@ export default function FormDetail() {
       "variants": [
           {
               "id": "32052651131023",
-              "discountedPrice": "30.00",
+              "discountedPrice": price,
               "taxable": true,
               "imageIds": [
                   "14075668463755"
@@ -90,7 +90,7 @@ export default function FormDetail() {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label className="label-color">Upload File</Form.Label>
-              <Form.Control type="email" placeholder="e.g. Image , Audio, Video" className="input-back" disabled />
+              <Form.Control type="file" placeholder="e.g. Image , Audio, Video" className="input-back"  style={{width:'100%'}}  />
             </Form.Group>
 
           </Row>
@@ -127,6 +127,10 @@ export default function FormDetail() {
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="label-color" style={{ marginLeft: 20 }}>Properties</Form.Label>
               <Form.Control className="input-back" placeholder="Subject" onChange={(event) => setProperties(event.target.value)}/>
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label className="label-color" style={{ marginLeft: 20 }}>Price</Form.Label >
+              <Form.Control className="input-back" placeholder="e.g price" type="number" onChange={(event) => setprice(event.target.value)}/>
             </Form.Group>
           </Row>
 

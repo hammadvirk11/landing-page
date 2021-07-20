@@ -111,7 +111,7 @@ function SignIn({ dispatch, authedUser }) {
         >
           <span style={{ color: "white" }}>or</span>
         </div>
-        <OAuth />
+        {/* <OAuth /> */}
       </form>
       <span style={{ color: "#ffffff", marginTop: "35px" }}>
         Don't have an account?&nbsp;
