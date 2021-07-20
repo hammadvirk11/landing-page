@@ -14,7 +14,7 @@ export function addProduct(data) {
   return async () => {
     try {
       const res = await axiosClient().post(`store/manual/product`, data);
-      alert(res.data.message);
+      // alert(res.data.message);
 
       // dispatch(
       //     addProductAction(
@@ -24,7 +24,7 @@ export function addProduct(data) {
       // );
     } catch (err) {
       console.log(err);
-      alert(err.data.message);
+      // alert(err.data.message);
     }
   };
 }

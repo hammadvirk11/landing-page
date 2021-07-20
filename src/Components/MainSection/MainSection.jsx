@@ -4,9 +4,10 @@ import {Button } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import  {Link} from 'react-router-dom'
+import  {Link,useHistory} from 'react-router-dom'
+import { connect } from "react-redux";
 
-export default function MainSection() {
+ function MainSection({ dispatch, authedUser }) {
   var settings = {
     dots: false,
     infinite: true,
@@ -23,8 +24,8 @@ export default function MainSection() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }
@@ -32,9 +33,9 @@ export default function MainSection() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {
@@ -46,6 +47,15 @@ export default function MainSection() {
       }
     ]
   };
+  const history = useHistory();
+  const handleCreate = () => {
+    {authedUser !== null && authedUser.status === "success"?
+    history.push('/product')
+    :
+    history.push('/')
+  }
+
+  }
   return (
     <React.Fragment>
       <div style={{marginLeft:'8%',marginRight:'8%'}}>
@@ -55,8 +65,8 @@ export default function MainSection() {
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/signin"><Button className="explore">Explore</Button></Link>{' '}
-        <Link to="/signin">  <Button className="create" >Create</Button></Link>
+        <Link to="/"><Button className="explore">Explore</Button></Link>{' '}
+        <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
 
@@ -65,8 +75,8 @@ export default function MainSection() {
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/signin"> <Button className="explore">Explore</Button></Link>{' '}
-        <Link to="/signin"><Button className="create" >Create</Button></Link>
+        <Link to="/"> <Button className="explore">Explore</Button></Link>{' '}
+        <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
 
@@ -76,8 +86,8 @@ export default function MainSection() {
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/signin"><Button className="explore">Explore</Button></Link>{' '}
-        <Link to="/signin"> <Button className="create" >Create</Button></Link>
+        <Link to="/"><Button className="explore">Explore</Button></Link>{' '}
+        <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
         </Slider>
@@ -85,4 +95,11 @@ export default function MainSection() {
     </React.Fragment>
   );
 }
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(MainSection);
 

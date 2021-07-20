@@ -2,9 +2,17 @@ import React from "react";
 import { Navbar, Nav, Container, NavDropdown,Button } from "react-bootstrap";
 import './CustomNavbar.css'
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Logout } from "../../store/actions/authedUser";
 
-function CustomNavbar() {
+function CustomNavbar({ dispatch, authedUser }) {
 
+    const handleLogout = () => {
+      // localStorage.removeItem('token')
+      // window.location.href="/"
+      dispatch(Logout());
+
+    }
   return (
 <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -45,7 +53,13 @@ function CustomNavbar() {
           <Nav>
             {/* <NavDropdown title="John Doe" id="collasible-nav-dropdown" className="padding-dropdown">
               </NavDropdown> */}
+                {authedUser !== null && authedUser.status === "success"?
+              <Button className="sign-in" onClick={handleLogout}>Logout</Button>
+
+              :
               <Link to="/signin"><Button className="sign-in">Sign in</Button></Link>
+
+            }
 
           </Nav>
         </Navbar.Collapse>
@@ -58,4 +72,10 @@ function CustomNavbar() {
     </>
   );
 }
-export default CustomNavbar;
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(CustomNavbar);
