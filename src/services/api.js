@@ -59,7 +59,7 @@ export const authToken = (loginToken) => {
       "Authorization": loginToken
     },
     body: JSON.stringify({
-      "userType": "coseller"
+      "userType": "vendor"
     }),
   };
   const url = endPoints.getAuthToken();
