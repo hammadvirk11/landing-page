@@ -67,7 +67,13 @@ function CustomNavbar({ dispatch, authedUser }) {
     </Navbar>
     <div className="Smll-nav">
 <h2 className="small-unitok">Unitok</h2>
-<Button className="sign-in">Sign in</Button>
+{authedUser !== null && authedUser.status === "success"?
+              <Button className="sign-in" onClick={handleLogout}>Logout</Button>
+
+              :
+              <Link to="/signin"><Button className="sign-in">Sign in</Button></Link>
+
+            }
     </div>
     </>
   );
