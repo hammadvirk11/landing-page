@@ -5,6 +5,7 @@ const initialState = {
   getvendors:[],
   getexplore:[],
   getHotcollection:[],
+  getProfileproducts:[],
   authtoken:''
 
 }
@@ -23,6 +24,13 @@ const otherStuff = (state = initialState, action) => {
         return {
           ...state,
           getproducts: action.products,
+        };
+      }
+      case "Profileproducts": {
+
+        return {
+          ...state,
+          getProfileproducts: action.profileproducts,
         };
       }
       case "vendors": {

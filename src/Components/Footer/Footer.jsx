@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="footer-back">
                 <Row className="margin-footer">
                     <Col md={4}>
-                        <h2 className="unitok">Unitok</h2>
+                        <h2 className="unitok">Unefti</h2>
                         <p>Digital marketplace for crypto collectibles<br/>
                             and non-fungible tokens (NFTs).<br/>
                             Buy, sell, and discover exclusive digital assets.</p>

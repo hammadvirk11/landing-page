@@ -73,7 +73,7 @@ function SignIn({ dispatch, authedUser }) {
   };
 
   return (
-    authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
+    authedUser !== null && authedUser.status === "success"? <Redirect to="/product" /> :
     <Container>
       <form onSubmit={handleSubmit}>
         <InputField

@@ -71,6 +71,27 @@ export function getProducts() {
     }
   };
 }
+function getProfileProductssAction(data) {
+  return {
+    type: "Profileproducts",
+    profileproducts: data,
+  };
+}
+export function getProfileProducts(id) {
+  return async (dispatch) => {
+    try {
+      const res = await axiosClient().get(
+        `platforms/075fbd22-012c-cc3e-a382-f4147380402f/products?vendorId=${id}`
+      );
+      NotificationManager.success("products Found");
+
+      dispatch(getProfileProductssAction(res.data.products));
+    } catch (err) {
+      console.log(err);
+      NotificationManager.error(err.response?.data.message);
+    }
+  };
+}
 function getVendorsAction(data) {
   return {
     type: "vendors",
