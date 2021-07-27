@@ -62,6 +62,7 @@ export default function HotCollection() {
                 {Products.length === 0 ?
                    <Row>
                    <Slider {...settings}>
+             
 
                        {AllProducts.map((x) =>
                            <Col md={3}>

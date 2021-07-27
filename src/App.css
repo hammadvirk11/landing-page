@@ -11,13 +11,13 @@ body{
 
 }
 h1 {
-color: white;
+color: white !important;
 }
 p {
-  color: #B7B7B7;
+  color: #B7B7B7 !important;
 }
 h5{
-  color: white;
+  color: white !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
