@@ -6,8 +6,10 @@ import { FaTwitter, FaMediumM, FaInstagram } from "react-icons/fa";
 import { AiOutlineCopy } from "react-icons/ai";
 import Tab from '../TabProfile/TabProfile'
 import profilepic from '../../assets/profilepic.jpg'
+import { connect } from "react-redux";
 
-export default function ProfileSidebar() {
+ function ProfileSidebar({ authedUser }) {
+    const user = authedUser?.data?.name?.split(" ")
 
     return (
         <div className="card-profile-style-padding" >
@@ -16,7 +18,7 @@ export default function ProfileSidebar() {
                 <Col md={3}>
                     <div className="card-profile">
                         {/* <Image src={profilepic} className="profile-pic" /> */}
-                        <h1 className="profile-pic">HV</h1>
+                        <h1 className="profile-pic">{user?user[0]?.substr(0,1)+user[1].substr(0,1):''}</h1>
                         <h4 className="title-profile">Lily Roze</h4>
                         <h4 className="title-profile-l1roze">@l1roze</h4>
                         <h6 className="text-profile">
@@ -44,4 +46,11 @@ export default function ProfileSidebar() {
         </div>
     );
 }
+function mapStateToProps({ authedUser }) {
+    return {
+      authedUser,
+    };
+  }
+  
+  export default connect(mapStateToProps)(ProfileSidebar);
 

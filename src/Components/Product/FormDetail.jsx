@@ -2,18 +2,20 @@ import React from "react";
 import "./ProductForm.css";
 import { Form, Image, Button, Row, Col, } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../store/actions/otherActions";
+import { addProduct, uploadMedia } from "../../store/actions/otherActions";
 import { axiosClient } from '../../helper';
 import { NotificationManager } from "react-notifications";
 import axios from "axios";
+import { connect } from "react-redux";
 
-export default function FormDetail() {
+function FormDetail({ authedUser }) {
   const dispatch = useDispatch();
-  const [title , setTitle] = React.useState("")
-  const [description , setdescription] = React.useState("")
-  const [size , setsize] = React.useState("")
-  const [Properties , setProperties] = React.useState("")
-  const [price , setprice] = React.useState("")
+  const [title, setTitle] = React.useState("")
+  const [description, setdescription] = React.useState("")
+  const [size, setsize] = React.useState("")
+  const [Properties, setProperties] = React.useState("")
+  const [price, setprice] = React.useState("")
+  const [cloudImage, setcloudImage] = React.useState("")
 
 
   const handleSubmit = async () => {
@@ -24,65 +26,80 @@ export default function FormDetail() {
       "title": title,
       "description": description,
       "primaryImageSrc": {
-          "id": "14075668463755",
-          "imageSrc": "https://shop-type-images-store.s3.amazonaws.com/dev/products/6fa51425-340e-f76c-69a1-dbbee4b241ad/comm3.jpg"
+        "id": "14075668463755",
+        "imageSrc": cloudImage
       },
       "catalogId": "04066e6d-4e8e-f9f0-3c35-f1e696ff4238",
       "variants": [
-          {
-              "id": "32052651131023",
-              "discountedPrice": price,
-              "taxable": true,
-              "imageIds": [
-                  "14075668463755"
-              ],
-              "sku": "RPCS5COM",
-              "quantity": 9,
-              "variantNameValue": {
-                  "size": size
-              },
-              "dimensions": {
-                  "length": "",
-                  "width": "",
-                  "height": ""
-              },
-              "weight": "",
-              "dimension_unit": "",
-              "weight_unit": "",
-              "is_virtual": false
-          }
+        {
+          "id": "32052651131023",
+          "discountedPrice": price,
+          "taxable": true,
+          "imageIds": [
+            "14075668463755"
+          ],
+          "sku": "RPCS5COM",
+          "quantity": 9,
+          "variantNameValue": {
+            "size": size
+          },
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "weight": "",
+          "dimension_unit": "",
+          "weight_unit": "",
+          "is_virtual": false
+        }
       ],
       "store_name": "shop-types",
       "currency": "USD",
       "sourceId": "4494266695819",
       "sourceName": "SHOPIFY",
       "options": [
-          {
-              "name": "size",
-              "values": [
-                  "10ML Roll On"
-              ]
-          }
+        {
+          "name": "size",
+          "values": [
+            "10ML Roll On"
+          ]
+        }
       ],
       "status": "enabled",
       "geoLocation": {
-          "type": "Point",
-          "coordinates": [
-              0,
-              0
-          ]
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
       },
       "vendorName": "Sheroes Vendor",
       "productCommission": {
-          "percentage": 0
+        "percentage": 0
       },
-      "extras":{
-        "id":232323
+      "extras": {
+        "id": 232323
       },
       "slug": ""
     }
-   dispatch(addProduct(data));
+    dispatch(addProduct(data));
   }
+  const uploadimage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "hammad");
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dz5fltj9r/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    setcloudImage(file.secure_url);
+  };
   return (
     <React.Fragment>
       <div className="card-form">
@@ -90,7 +107,8 @@ export default function FormDetail() {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label className="label-color">Upload File</Form.Label>
-              <Form.Control type="file" placeholder="e.g. Image , Audio, Video" className="input-back"  style={{width:'100%'}}  />
+              <Form.Control type="file" placeholder="e.g. Image , Audio, Video" className="input-back" style={{ width: '100%' }}
+                onChange={(event) => uploadimage(event)} />
             </Form.Group>
 
           </Row>
@@ -103,7 +121,7 @@ export default function FormDetail() {
 
           <Form.Group className="mb-3" controlId="formGridAddress2">
             <Form.Label className="label-color" style={{ marginLeft: 20 }}>Description</Form.Label>
-            <Form.Control placeholder="" className="input-back" onChange={(event) => setdescription(event.target.value)}/>
+            <Form.Control placeholder="" className="input-back" onChange={(event) => setdescription(event.target.value)} />
           </Form.Group>
 
           <Row className="mb-3">
@@ -121,16 +139,16 @@ export default function FormDetail() {
     </Form.Group> */}
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label className="label-color" style={{ marginLeft: 20 }}>Size</Form.Label >
-              <Form.Control className="input-back" placeholder="e.g Size" onChange={(event) => setsize(event.target.value)}/>
+              <Form.Control className="input-back" placeholder="e.g Size" onChange={(event) => setsize(event.target.value)} />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="label-color" style={{ marginLeft: 20 }}>Properties</Form.Label>
-              <Form.Control className="input-back" placeholder="Subject" onChange={(event) => setProperties(event.target.value)}/>
+              <Form.Control className="input-back" placeholder="Subject" onChange={(event) => setProperties(event.target.value)} />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label className="label-color" style={{ marginLeft: 20 }}>Price</Form.Label >
-              <Form.Control className="input-back" placeholder="e.g price" type="number" onChange={(event) => setprice(event.target.value)}/>
+              <Form.Control className="input-back" placeholder="e.g price" type="number" onChange={(event) => setprice(event.target.value)} />
             </Form.Group>
           </Row>
 
@@ -150,3 +168,10 @@ export default function FormDetail() {
   );
 }
 
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(FormDetail);

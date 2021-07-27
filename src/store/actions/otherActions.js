@@ -8,13 +8,34 @@ import axios from "axios";
 //       productData:data
 //     };
 //   }
+export function uploadMedia(media,token) {
+  const options = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: token,
+    },
+  };
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(
+        "https://dev-backend.shoptype.com/upload-media",
+        media,
+        options
+      );
+      alert(res.data.message)
+    } catch (err) {
+      console.log(err);
+      NotificationManager.error(err.response?.data.message);
+    }
+  };
+}
 export function addProduct(data) {
   console.log(data);
 
   return async () => {
     try {
       const res = await axiosClient().post(`store/manual/product`, data);
-      // alert(res.data.message);
+      alert(res.data.message);
 
       // dispatch(
       //     addProductAction(
