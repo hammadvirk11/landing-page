@@ -13,7 +13,7 @@ export default function Explore() {
   var settings = {
     dots: false,
     infinite: true,
-    arrows: false,
+    arrows: true,
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 500,
@@ -57,7 +57,7 @@ export default function Explore() {
       <div className="live-auction">
         <div className="live-auction-arrow">
           <h6 className="live">Explore</h6>
-          <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
+          {/* <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p> */}
         </div>
         {Products.length===0 ?
             <Row>

@@ -13,7 +13,7 @@ export default function HotCollection() {
     var settings = {
         dots: false,
         infinite: true,
-        arrows: false,
+        arrows: true,
         autoplay: false,
         autoplaySpeed: 2000,
         speed: 500,
@@ -57,7 +57,7 @@ export default function HotCollection() {
             <div className="live-auction">
                 <div className="live-auction-arrow">
                     <h6 className="live">Hot collections</h6>
-                    <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
+                    {/* <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p> */}
                 </div>
                 {Products.length === 0 ?
                    <Row>

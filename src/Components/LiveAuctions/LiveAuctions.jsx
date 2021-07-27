@@ -13,7 +13,7 @@ export default function LiveAuctions() {
     var settings = {
         dots: false,
         infinite: true,
-        arrows:false,
+        arrows:true,
         autoplay: true,
         autoplaySpeed: 2000,
         speed: 500,
@@ -60,7 +60,7 @@ export default function LiveAuctions() {
    <div className="live-auction">
        <div className="live-auction-arrow">
            <h6 className="live">Live auctions</h6>
-           <p>  <AiOutlineArrowLeft/>  <AiOutlineArrowRight/></p>
+           {/* <p>  <AiOutlineArrowLeft/>  <AiOutlineArrowRight/></p> */}
        </div>
         <Row>
         <Slider {...settings}>
