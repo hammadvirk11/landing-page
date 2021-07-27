@@ -50,6 +50,40 @@ export const signup = (userInfo) => {
   });
 };
 
+export const registerVendor = (authedUser) => {
+  const vendorDetails = {
+    "name": authedUser.data.name,
+    "productCategories": [
+      "NFT"
+    ],
+    "url": "www.testvendor.com",
+    "timestamp": 1618022863105
+  }
+  let reqObj = {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": authedUser.data.token
+    },
+    body: JSON.stringify(vendorDetails),
+  };
+  const url = endPoints.registerVendors();
+  return fetch(url, reqObj).then((resp) =>{
+    if(resp.ok)
+      return resp.json().then(resp => ({
+        status: 200,
+        response: resp
+      }))
+    else
+    return resp.json().then(resp => ({
+      status: 400,
+      response: resp
+    }))
+  });
+};
+
+
 export const authToken = (loginToken) => {
   let reqObj = {
     method: "POST",

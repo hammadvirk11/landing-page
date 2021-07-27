@@ -10,7 +10,6 @@ import Password from "../resuable-components/Password";
 import OAuth from "../../oauth";
 import InputField from "../resuable-components/InputField";
 import { signup } from "../../services/api";
-//import { signup } from "../../store/actions/otherActions"
 import { useDispatch } from "react-redux";
 import { Redirect,useHistory } from "react-router-dom";
 import { Typography } from "@material-ui/core";
@@ -155,7 +154,7 @@ export default function SignIn() {
         >
           <span style={{ color: "white" }}>or</span>
         </div>
-        {/* <OAuth /> */}
+        <OAuth />
       </form>
 
       <span style={{ color: "#ffffff", marginTop: "35px" }}>
