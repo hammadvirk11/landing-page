@@ -152,10 +152,10 @@ function FormDetail({ authedUser }) {
             </Form.Group>
           </Row>
 
-          <Form.Group className="mb-3" id="formGridRadio">
-            <Form.Check id="same" type="radio" label="Put on sale" className="color-checkbox" />
-            <Form.Check id="same" type="radio" label="Instant sale price" className="color-checkbox" />
-            <Form.Check id="same" type="radio" label="Unlock one purchased" className="color-checkbox" />
+          <Form.Group class="form-check" className="mb-3" id="formGridRadio">
+            <Form.Check  class="form-check-input" id="same"  name="group1" type="radio" label="Put on sale" className="color-checkbox" />
+            <Form.Check  class="form-check-input" id="same" name="group1" type="radio" label="Instant sale price" className="color-checkbox" />
+            <Form.Check class="form-check-input"  id="same" name="group1" type="radio" label="Unlock one purchased" className="color-checkbox" />
 
           </Form.Group>
 

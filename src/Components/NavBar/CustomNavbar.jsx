@@ -1,23 +1,26 @@
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown,Button } from "react-bootstrap";
 import './CustomNavbar.css'
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import { connect } from "react-redux";
 import { Logout } from "../../store/actions/authedUser";
 
 function CustomNavbar({ dispatch, authedUser }) {
+  const history = useHistory();
 
-    const handleLogout = () => {
+    const handleLogout = async() => {
       // localStorage.removeItem('token')
       // window.location.href="/"
-      dispatch(Logout());
+    await dispatch(Logout());
+    history.push('/signin')
+
 
     }
   return (
 <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home" style={{fontSize:28}}>Unitok</Navbar.Brand>
+        <Navbar.Brand href="/" style={{fontSize:28}}>Unefti</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
