@@ -6,7 +6,8 @@ const endPoints ={
     socialLogin: () => `${url}/social-login?rid=${rid}`,
     logout: () => `${url}/logout`,
     signup: () => `${url}/register?rid=${rid}`,
-    getAuthToken: () => `${url}/authenticate`
+    getAuthToken: () => `${url}/authenticate`,
+    registerVendors: () => `${url}/vendors`
 }
 
 export default endPoints;
