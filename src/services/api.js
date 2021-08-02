@@ -1,6 +1,6 @@
 import endPoints from "../config/apiConfig";
+import config from "../config/config.json";
 
-const platformId = "075fbd22-012c-cc3e-a382-f4147380402f";
 //api's for user journey
 
 //signin
@@ -10,7 +10,7 @@ export const login = (userCredentials) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      "X-Shoptype-PlatformId": platformId
+      "X-Shoptype-PlatformId": config.PLATFORM_ID,
     },
     body: JSON.stringify(userCredentials),
   };
@@ -24,7 +24,7 @@ export const socialLogin = (info) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      "X-Shoptype-PlatformId": platformId
+      "X-Shoptype-PlatformId": config.PLATFORM_ID,
     },
     body: JSON.stringify(info),
   };
@@ -39,7 +39,7 @@ export const signup = (userInfo) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      "X-Shoptype-PlatformId": platformId
+      "X-Shoptype-PlatformId": config.PLATFORM_ID,
     },
     body: JSON.stringify(userInfo),
   };
@@ -52,37 +52,58 @@ export const signup = (userInfo) => {
 
 export const registerVendor = (authedUser) => {
   const vendorDetails = {
-    "name": authedUser.data.name,
-    "productCategories": [
-      "NFT"
-    ],
-    "url": "www.testvendor.com",
-    "timestamp": 1618022863105
-  }
+    name: authedUser.data.name,
+    productCategories: ["NFT"],
+    url: "www.testvendor.com",
+    timestamp: 1618022863105,
+  };
   let reqObj = {
     method: "POST",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": authedUser.data.token
+      Authorization: authedUser.data.token,
     },
     body: JSON.stringify(vendorDetails),
   };
   const url = endPoints.registerVendors();
-  return fetch(url, reqObj).then((resp) =>{
-    if(resp.ok)
-      return resp.json().then(resp => ({
+  return fetch(url, reqObj).then((resp) => {
+    if (resp.ok)
+      return resp.json().then((resp) => ({
         status: 200,
-        response: resp
-      }))
+        response: resp,
+      }));
     else
-    return resp.json().then(resp => ({
-      status: 400,
-      response: resp
-    }))
+      return resp.json().then((resp) => ({
+        status: 400,
+        response: resp,
+      }));
   });
 };
 
+export const discoverVendor = (text) => {
+  let reqObj = {
+    method: "GET",
+    credentials: "same-origin",
+    headers: {
+      authorization: config.NETWORK_TOKEN,
+    }
+  };
+  const url = endPoints.discoverVendor(text);
+  return fetch(url, reqObj).then((resp) => resp.json());
+};
+
+export const inviteVendor = (vendorId) => {
+  let reqObj = {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      authorization: config.NETWORK_TOKEN,
+    }
+  };
+  const url = endPoints.inviteVendor(vendorId);
+  return fetch(url, reqObj).then((resp) => resp.json());
+};
 
 export const authToken = (loginToken) => {
   let reqObj = {
@@ -90,10 +111,10 @@ export const authToken = (loginToken) => {
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": loginToken
+      Authorization: loginToken,
     },
     body: JSON.stringify({
-      "userType": "vendor"
+      userType: "vendor",
     }),
   };
   const url = endPoints.getAuthToken();
