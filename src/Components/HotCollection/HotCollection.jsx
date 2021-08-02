@@ -13,7 +13,7 @@ export default function HotCollection() {
     var settings = {
         dots: false,
         infinite: true,
-        arrows: false,
+        arrows: true,
         autoplay: false,
         autoplaySpeed: 2000,
         speed: 500,
@@ -26,18 +26,15 @@ export default function HotCollection() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
+                    slidesToShow: 2,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 700,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             },
             {
@@ -57,11 +54,12 @@ export default function HotCollection() {
             <div className="live-auction">
                 <div className="live-auction-arrow">
                     <h6 className="live">Hot collections</h6>
-                    <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p>
+                    {/* <p>  <AiOutlineArrowLeft />  <AiOutlineArrowRight /></p> */}
                 </div>
                 {Products.length === 0 ?
                    <Row>
                    <Slider {...settings}>
+             
 
                        {AllProducts.map((x) =>
                            <Col md={3}>

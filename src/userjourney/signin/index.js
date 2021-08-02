@@ -73,7 +73,7 @@ function SignIn({ dispatch, authedUser }) {
   };
 
   return (
-    authedUser !== null && authedUser.status === "success" ? <Redirect to="/" />:
+    authedUser !== null && authedUser.status === "success"? <Redirect to="/product" /> :
     <Container>
       <form onSubmit={handleSubmit}>
         <InputField
@@ -94,7 +94,7 @@ function SignIn({ dispatch, authedUser }) {
           isValidationRequired={false}
         />
         <StyledFormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
+          control={<Checkbox value="remember" color="primary"  />}
           label="Remember me"
         />
         {/* {authedUser!==null && authedUser.error !== undefined && <Typography style={{color:"red"}}>{authedUser.error}</Typography>} */}

@@ -2,8 +2,11 @@ import React from "react";
 import {  Form, Row,Col ,Button} from "react-bootstrap";
 import { AiOutlineHeart, AiOutlineArrowRight } from "react-icons/ai";
 import '../TabProfile.css'
-export default function Personal() {
+import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
+export default function Personal() {
+  const authedUser = useSelector(state => state.authedUser)
+    const name= authedUser.data.name.split(" ")
     return (
         <React.Fragment>
             <div className="card-personal">
@@ -13,11 +16,11 @@ export default function Personal() {
   <Row className="mb-3">
   <Form.Group as={Col} controlId="formGridText">
       <Form.Label className="label-color">Login</Form.Label>
-      <Form.Control type="text" placeholder="User123" className="input-back"/>
+      <Form.Control type="text" value={authedUser.data._id} className="input-back"/>
     </Form.Group>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label className="label-color">Email</Form.Label>
-      <Form.Control type="email" placeholder="email@email.com" className="input-back" />
+      <Form.Control type="email" value={authedUser.data.email} className="input-back" />
     </Form.Group>
 
     
@@ -28,11 +31,11 @@ export default function Personal() {
   <Row className="mb-3">
   <Form.Group as={Col} controlId="formGridText">
       <Form.Label className="label-color">First name</Form.Label>
-      <Form.Control type="text" placeholder="John" className="input-back"/>
+      <Form.Control type="text" value={name[0]} className="input-back"/>
     </Form.Group>
     <Form.Group as={Col} controlId="formGridText">
       <Form.Label className="label-color">Last name</Form.Label>
-      <Form.Control type="text" placeholder="Doe" className="input-back"/>
+      <Form.Control type="text" value={name[1]} className="input-back"/>
     </Form.Group>
 
     

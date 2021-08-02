@@ -85,7 +85,7 @@ export default function SignIn() {
         .then((response) =>{
           alert(response.message)
           if(response.message === "User created successfully"){
-          history.push('/product')
+          history.push('/signin')
           }
           setUserInfo((prevState) => ({
             ...prevState,
@@ -137,7 +137,7 @@ export default function SignIn() {
           isValidationRequired={true}
         />
         <StyledFormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
+          control={<Checkbox value="remember" color="primary" required />}
           label="I agree to privacy policy"
         />
         {userInfo.response !== null && userInfo.response.code !== 200 && <Typography style={{color:"red"}}>{userInfo.response.message}</Typography>}

@@ -52,9 +52,16 @@ import { connect } from "react-redux";
     {authedUser !== null && authedUser.status === "success"?
     history.push('/product')
     :
-    history.push('/')
+    history.push('/signin')
   }
 
+  }
+  const handleExplore = () => {
+    {authedUser !== null && authedUser.status === "success"?
+    history.push('/profile')
+    :
+    history.push('/signin')
+  }
   }
   return (
     <React.Fragment>
@@ -65,7 +72,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/"><Button className="explore">Explore</Button></Link>{' '}
+        <Button className="explore" onClick={handleExplore}>Explore</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
@@ -75,7 +82,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/"> <Button className="explore">Explore</Button></Link>{' '}
+        <Button className="explore" onClick={handleExplore}>Explore</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
@@ -86,7 +93,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Link to="/"><Button className="explore">Explore</Button></Link>{' '}
+        <Button className="explore" onClick={handleExplore}>Explore</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>

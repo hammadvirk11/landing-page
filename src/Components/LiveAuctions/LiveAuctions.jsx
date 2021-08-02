@@ -13,7 +13,7 @@ export default function LiveAuctions() {
     var settings = {
         dots: false,
         infinite: true,
-        arrows:false,
+        arrows:true,
         autoplay: true,
         autoplaySpeed: 2000,
         speed: 500,
@@ -26,18 +26,17 @@ export default function LiveAuctions() {
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
+              slidesToShow: 2,
+              slidesToScroll: 1,
               infinite: true,
               dots: true
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 700,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
+              slidesToShow: 1,
+              slidesToScroll: 1
             }
           },
           {
@@ -60,7 +59,7 @@ export default function LiveAuctions() {
    <div className="live-auction">
        <div className="live-auction-arrow">
            <h6 className="live">Live auctions</h6>
-           <p>  <AiOutlineArrowLeft/>  <AiOutlineArrowRight/></p>
+           {/* <p>  <AiOutlineArrowLeft/>  <AiOutlineArrowRight/></p> */}
        </div>
         <Row>
         <Slider {...settings}>
