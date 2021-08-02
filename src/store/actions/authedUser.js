@@ -1,7 +1,15 @@
-import { login, socialLogin, authToken, registerVendor } from "../../services/api";
+import {
+  login,
+  socialLogin,
+  authToken,
+  registerVendor,
+  discoverVendor,
+  inviteVendor,
+} from "../../services/api";
 
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
+export const SET_VENDOR_ID = "SET_VENDOR_ID";
 export const LOG_OUT = "LOG_OUT";
 
 export function setAuthedUser(authedUser) {
@@ -22,20 +30,47 @@ export function setAuthToken(authToken) {
     authToken,
   };
 }
+
+export function setVendorId(vendorId) {
+  return {
+    type: SET_VENDOR_ID,
+    vendorId,
+  };
+}
+
 export function getUser(userCredentials) {
   return (dispatch) => {
     return login(userCredentials).then((authedUser) => {
-      if (authedUser.error == undefined){
-        registerVendor(authedUser).then(resp => {
-          if(resp.status !== 200)
-            alert(resp.response.message);
-          authToken(authedUser.data.token).then((authToken) =>{
-          localStorage.setItem("token",authToken.token)
-          return dispatch(setAuthToken(authToken))
-          });
-        })
+      if (authedUser.error == undefined) {
+        dispatch(setAuthedUser(authedUser));
+        authToken(authedUser.data.token).then((authToken) => {
+          localStorage.setItem("token", authToken.token);
+          return dispatch(setAuthToken(authToken));
+        });
+        return discoverVendor(authedUser.data.name.split(" ")[0]).then(
+          (vendorRes) => {
+            if (vendorRes.count == 0) {
+              return registerVendor(authedUser).then((resp) => {
+                if (resp.status !== 200) return alert(resp.response.message);
+                else {
+                  return discoverVendor(
+                    authedUser.data.name.split(" ")[0]
+                  ).then((response) => {
+                    return inviteVendor(response.vendors[0].id).then(
+                      (inviteVendorRes) =>
+                        dispatch(setVendorId(response.vendors[0].id))
+                    );
+                  });
+                }
+              });
+            } else
+              return inviteVendor(vendorRes.vendors[0].id).then(
+                (inviteVendorRes) =>
+                  dispatch(setVendorId(vendorRes.vendors[0].id))
+              );
+          }
+        );
       }
-      dispatch(setAuthedUser(authedUser));
     });
   };
 }
@@ -43,19 +78,36 @@ export function getUser(userCredentials) {
 export function getUserFromSocialLogin(info) {
   return (dispatch) => {
     return socialLogin(info).then((authedUser) => {
-      if (authedUser.error == undefined)
-      {
-        registerVendor(authedUser).then(resp => {
-          if(resp.status !== 200)
-            alert(resp.response.message);
-          authToken(authedUser.data.token).then((authToken) =>{
-          localStorage.setItem("token",authToken.token)
-          return dispatch(setAuthToken(authToken))
-          });
-        })
+      if (authedUser.error == undefined) {
+        dispatch(setAuthedUser(authedUser));
+        authToken(authedUser.data.token).then((authToken) => {
+          localStorage.setItem("token", authToken.token);
+          return dispatch(setAuthToken(authToken));
+        });
+        return discoverVendor(authedUser.data.name.split(" ")[0]).then(
+          (vendorRes) => {
+            if (vendorRes.count == 0) {
+              return registerVendor(authedUser).then((resp) => {
+                if (resp.status !== 200) return alert(resp.response.message);
+                else {
+                  return discoverVendor(
+                    authedUser.data.name.split(" ")[0]
+                  ).then((response) => {
+                    return inviteVendor(response.vendors[0].id).then(
+                      (inviteVendorRes) =>
+                        dispatch(setVendorId(response.vendors[0].id))
+                    );
+                  });
+                }
+              });
+            } else
+              return inviteVendor(vendorRes.vendors[0].id).then(
+                (inviteVendorRes) =>
+                  dispatch(setVendorId(vendorRes.vendors[0].id))
+              );
+          }
+        );
       }
-      dispatch(setAuthedUser(authedUser));
     });
   };
 }
-
