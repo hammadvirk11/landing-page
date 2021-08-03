@@ -11,12 +11,12 @@ import { getProfileProducts } from "../../store/actions/otherActions";
 
 export default function Profile() {
   const dispatch = useDispatch();
-  const authedUser = useSelector(state => state.authedUser)
+  const vendorId = useSelector(state => state.vendorId)
 
   useEffect(() => {
-    dispatch(getProfileProducts(authedUser.data._id));
+    dispatch(getProfileProducts(vendorId));
   }, [])
-
+console.log(vendorId,"jhbhgbj")
   return (
     <React.Fragment>
       <Navbar />
