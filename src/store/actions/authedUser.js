@@ -41,8 +41,8 @@ export function setVendorId(vendorId) {
 export function getUser(userCredentials) {
   return (dispatch) => {
     return login(userCredentials).then((authedUser) => {
+      dispatch(setAuthedUser(authedUser));
       if (authedUser.error == undefined) {
-        dispatch(setAuthedUser(authedUser));
         authToken(authedUser.data.token).then((authToken) => {
           localStorage.setItem("token", authToken.token);
           return dispatch(setAuthToken(authToken));
@@ -57,16 +57,26 @@ export function getUser(userCredentials) {
                     authedUser.data.name.split(" ")[0]
                   ).then((response) => {
                     return inviteVendor(response.vendors[0].id).then(
-                      (inviteVendorRes) =>
-                        dispatch(setVendorId(response.vendors[0].id))
+                      (inviteVendorRes) =>{
+                        authToken(authedUser.data.token).then((authToken) => {
+                          localStorage.setItem("token", authToken.token);
+                          return dispatch(setAuthToken(authToken));
+                        });
+                        return dispatch(setVendorId(response.vendors[0].id))
+                      }
                     );
                   });
                 }
               });
             } else
               return inviteVendor(vendorRes.vendors[0].id).then(
-                (inviteVendorRes) =>
-                  dispatch(setVendorId(vendorRes.vendors[0].id))
+                (inviteVendorRes) =>{
+                  authToken(authedUser.data.token).then((authToken) => {
+                    localStorage.setItem("token", authToken.token);
+                    return dispatch(setAuthToken(authToken));
+                  });
+                  return dispatch(setVendorId(vendorRes.vendors[0].id))
+                }
               );
           }
         );
@@ -78,8 +88,8 @@ export function getUser(userCredentials) {
 export function getUserFromSocialLogin(info) {
   return (dispatch) => {
     return socialLogin(info).then((authedUser) => {
+      dispatch(setAuthedUser(authedUser));
       if (authedUser.error == undefined) {
-        dispatch(setAuthedUser(authedUser));
         authToken(authedUser.data.token).then((authToken) => {
           localStorage.setItem("token", authToken.token);
           return dispatch(setAuthToken(authToken));
@@ -94,16 +104,27 @@ export function getUserFromSocialLogin(info) {
                     authedUser.data.name.split(" ")[0]
                   ).then((response) => {
                     return inviteVendor(response.vendors[0].id).then(
-                      (inviteVendorRes) =>
-                        dispatch(setVendorId(response.vendors[0].id))
+                      (inviteVendorRes) =>{
+                        authToken(authedUser.data.token).then((authToken) => {
+                          localStorage.setItem("token", authToken.token);
+                          return dispatch(setAuthToken(authToken));
+                        });
+                        return dispatch(setVendorId(response.vendors[0].id))
+                      }
+                       
                     );
                   });
                 }
               });
             } else
               return inviteVendor(vendorRes.vendors[0].id).then(
-                (inviteVendorRes) =>
-                  dispatch(setVendorId(vendorRes.vendors[0].id))
+                (inviteVendorRes) =>{
+                  authToken(authedUser.data.token).then((authToken) => {
+                    localStorage.setItem("token", authToken.token);
+                    return dispatch(setAuthToken(authToken));
+                  });
+                  return dispatch(setVendorId(vendorRes.vendors[0].id))
+                }
               );
           }
         );
