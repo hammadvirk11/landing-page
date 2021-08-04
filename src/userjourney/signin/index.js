@@ -97,7 +97,7 @@ function SignIn({ dispatch, authedUser }) {
           control={<Checkbox value="remember" color="primary"  />}
           label="Remember me"
         />
-        {/* {authedUser!==null && authedUser.error !== undefined && <Typography style={{color:"red"}}>{authedUser.error}</Typography>} */}
+        {authedUser!==null && authedUser.error !== undefined && <Typography style={{color:"red"}}>{authedUser.error}</Typography>}
         <StyledSigninBtn
           type="submit"
           fullWidth
