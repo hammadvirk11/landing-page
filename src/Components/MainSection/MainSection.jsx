@@ -72,7 +72,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore" onClick={handleExplore}>Explore</Button>
+        <Button className="explore" onClick={handleExplore}> {authedUser !== null && authedUser.status === "success"?'My Portfolio':'Explore'}</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
@@ -82,7 +82,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore" onClick={handleExplore}>Explore</Button>
+        <Button className="explore" onClick={handleExplore}> {authedUser !== null && authedUser.status === "success"?'My Portfolio':'Explore'}</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>
@@ -93,7 +93,7 @@ import { connect } from "react-redux";
         <p className="marketplace">Digital marketplace for crypto collectibles and non-fungible tokens.</p>
         <p className="marketplace">Buy, sell, and discover exclusive digital assets.</p>
         <div className="button-flex">
-        <Button className="explore" onClick={handleExplore}>Explore</Button>
+        <Button className="explore" onClick={handleExplore}> {authedUser !== null && authedUser.status === "success"?'My Portfolio':'Explore'}</Button>
         <Button className="create" onClick={handleCreate}>Create</Button>
         </div>
         </div>

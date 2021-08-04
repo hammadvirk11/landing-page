@@ -28,7 +28,7 @@ export default function TabProfile() {
             <>
               {Products.map((x) =>
 
-                <Col md={4}>
+                <Col lg={4} md={6} sm={12} xs={12}>
                   <Card
                     data={x} />
                 </Col>
@@ -48,7 +48,7 @@ export default function TabProfile() {
             <>
               {Products.map((x) =>
 
-                <Col md={4}>
+                <Col lg={4} md={6} sm={12} xs={12}>
                   <Card
                     data={x} />
                 </Col>

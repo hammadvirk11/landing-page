@@ -71,6 +71,11 @@ border-radius: 10px;
 margin-bottom: 10px;
 padding: 2px;
 }
+.Portfolio-create{
+    height: 40px;
+    margin-bottom: 15px;
+
+}
 @media screen and (max-width: 700px) {
     .card-profile-style-padding{
         padding-left: 15px !important;

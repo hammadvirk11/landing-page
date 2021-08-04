@@ -7,10 +7,16 @@ import { AiOutlineCopy } from "react-icons/ai";
 import Tab from '../TabProfile/TabProfile'
 import profilepic from '../../assets/profilepic.jpg'
 import { connect } from "react-redux";
+import  {Link,useHistory} from 'react-router-dom'
 
  function ProfileSidebar({ authedUser }) {
-    const user = authedUser?.data?.name?.split(" ")
+  const history = useHistory();
 
+    const user = authedUser?.data?.name?.split(" ")
+    const handleExplore = () => {
+        history.push('/product')
+        
+      }
     return (
         <div className="card-profile-style-padding" >
             <Row>
@@ -19,7 +25,7 @@ import { connect } from "react-redux";
                     <div className="card-profile">
                         {/* <Image src={profilepic} className="profile-pic" /> */}
                         <h1 className="profile-pic">{user?user[0]?.substr(0,1)+user[1].substr(0,1):''}</h1>
-                        <h4 className="title-profile">Lily Roze</h4>
+                        <h4 className="title-profile">{user?user[0]+ ' '+user[1]:''}</h4>
                         <h4 className="title-profile-l1roze">@l1roze</h4>
                         <h6 className="text-profile">
                             All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary
@@ -28,7 +34,7 @@ import { connect } from "react-redux";
                             <p>FTGVYBHUJNKMVGBHNJHBGVF...</p>
                             <span><AiOutlineCopy color="white" style={{cursor:'pointer'}}/></span>
                         </div>
-                        <p className="for-hover"> <BiWorld color="blue" />  https://unitok.template</p>
+                        <p className="for-hover"> <BiWorld color="blue" />  https://Unefti.template</p>
                         <p> <FaInstagram /> <FaTwitter className="margin-icon-profile" /> <FaMediumM /></p>
                         <hr />
                         <div className="flex-profile">
@@ -40,7 +46,18 @@ import { connect } from "react-redux";
                     </div>
                 </Col>
                 <Col md={9}>
+                    <Row>
+                    <Col md={12}>
+                    <div style={{float:'right',display:'flex'}}>
+                    <Button className="Portfolio-create" onClick={handleExplore}>Create Product</Button>
+
+                    </div>
+                    </Col>
+                    <Col  md={12}>
+
                     <Tab/>
+                    </Col>
+                    </Row>
                 </Col>
             </Row>
         </div>
