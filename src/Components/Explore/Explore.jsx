@@ -11,7 +11,7 @@ import {shallowEqual, useSelector, useDispatch  } from "react-redux";
 export default function Explore() {
 
   var settings = {
-    dots: false,
+    dots: false,  
     infinite: true,
     arrows: true,
     autoplay: true,
